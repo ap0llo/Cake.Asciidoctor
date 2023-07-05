@@ -75,7 +75,278 @@ public class AsciidoctorRunnerTest
             expectedArguments: new[] { "exec", "asciidoctor", "\"input.adoc\"" }
         );
 
+
+        yield return TestCase(
+            id: "T04",
+            inputFile: "input.adoc",
+            settings: new AsciidoctorSettings()
+            {
+                BaseDirectory = "some-directory"
+            },
+            expectedArguments: new[] { "\"input.adoc\"", "\"--base-dir=some-directory\"" }
+        );
+
+        foreach (var safeMode in Enum.GetValues<AsciidoctorSafeMode>())
+        {
+            yield return TestCase(
+                id: $"T05-{safeMode}",
+                inputFile: "input.adoc",
+                settings: new AsciidoctorSettings()
+                {
+                    SafeMode = safeMode
+                },
+                expectedArguments: new[] { "\"input.adoc\"", $"--safe-mode={safeMode.ToString().ToLower()}" }
+            );
+        }
+
+
+        yield return TestCase(
+            id: "T06",
+            inputFile: "input.adoc",
+            settings: new AsciidoctorSettings()
+            {
+                Backend = "some-backend"
+            },
+            expectedArguments: new[] { "\"input.adoc\"", "\"--backend=some-backend\"" }
+        );
+
+        foreach (var doctype in Enum.GetValues<AsciidoctorDoctype>())
+        {
+            yield return TestCase(
+                id: $"T07-{doctype}",
+                inputFile: "input.adoc",
+                settings: new AsciidoctorSettings()
+                {
+                    Doctype = doctype
+                },
+                expectedArguments: new[] { "\"input.adoc\"", $"--doctype={doctype.ToString().ToLower()}" }
+            );
+        }
+
+        yield return TestCase(
+            id: "T08",
+            inputFile: "input.adoc",
+            settings: new AsciidoctorSettings()
+            {
+                DestinationDirectory = "some-destination-directory"
+            },
+            expectedArguments: new[] { "\"input.adoc\"", "\"--destination-dir=some-destination-directory\"" }
+        );
+
+        yield return TestCase(
+            id: "T09",
+            inputFile: "input.adoc",
+            settings: new AsciidoctorSettings()
+            {
+                TemplateEngine = "my-template-engine"
+            },
+            expectedArguments: new[] { "\"input.adoc\"", "\"--template-engine=my-template-engine\"" }
+        );
+
+        yield return TestCase(
+            id: "T10",
+            inputFile: "input.adoc",
+            settings: new AsciidoctorSettings()
+            {
+                Embedded = true
+            },
+            expectedArguments: new[] { "\"input.adoc\"", "--embedded" }
+        );
+
+        yield return TestCase(
+            id: "T11",
+            inputFile: "input.adoc",
+            settings: new AsciidoctorSettings()
+            {
+                LoadPath = "some-load-path"
+            },
+            expectedArguments: new[] { "\"input.adoc\"", "\"--load-path=some-load-path\"" }
+        );
+
+        yield return TestCase(
+            id: "T12",
+            inputFile: "input.adoc",
+            settings: new AsciidoctorSettings()
+            {
+                SectionNumbers = true
+            },
+            expectedArguments: new[] { "\"input.adoc\"", "--section-numbers" }
+        );
+
+        yield return TestCase(
+            id: "T13",
+            inputFile: "input.adoc",
+            settings: new AsciidoctorSettings()
+            {
+                OutFile = "directory/output.html"
+            },
+            expectedArguments: new[] { "\"input.adoc\"", "\"--out-file=directory/output.html\"" }
+        );
+
+        yield return TestCase(
+            id: "T14",
+            inputFile: "input.adoc",
+            settings: new AsciidoctorSettings()
+            {
+                SourceDirectory = "some-source-directory"
+            },
+            expectedArguments: new[] { "\"input.adoc\"", "\"--source-dir=some-source-directory\"" }
+        );
+
+        yield return TestCase(
+            id: "T15",
+            inputFile: "input.adoc",
+            settings:
+                new AsciidoctorSettings().AddRequire("library1"),
+            expectedArguments: new[] { "\"input.adoc\"", "\"--require=library1\"" }
+        );
+
+        yield return TestCase(
+            id: "T16",
+            inputFile: "input.adoc",
+            settings:
+                new AsciidoctorSettings().AddRequire("library1").AddRequire("library2"),
+            expectedArguments: new[] { "\"input.adoc\"", "\"--require=library1\"", "\"--require=library2\"" }
+        );
+
+        yield return TestCase(
+            id: "T17",
+            inputFile: "input.adoc",
+            settings: new AsciidoctorSettings()
+            {
+                NoHeaderFooter = true
+            },
+            expectedArguments: new[] { "\"input.adoc\"", "--no-header-footer" }
+        );
+
+        yield return TestCase(
+            id: "T18",
+            inputFile: "input.adoc",
+            settings: new AsciidoctorSettings()
+            {
+                TemplateDirectory = "some-template-dir"
+            },
+            expectedArguments: new[] { "\"input.adoc\"", "\"--template-dir=some-template-dir\"" }
+        );
+
+        foreach (var failureLevel in Enum.GetValues<AsciidoctorFailureLevel>())
+        {
+            yield return TestCase(
+                id: $"T19-{failureLevel}",
+                inputFile: "input.adoc",
+                settings: new AsciidoctorSettings()
+                {
+                    FailureLevel = failureLevel
+                },
+                expectedArguments: new[] { "\"input.adoc\"", $"--failure-level={failureLevel.ToString().ToUpper()}" }
+            );
+        }
+
+        yield return TestCase(
+            id: "T20",
+            inputFile: "input.adoc",
+            settings: new AsciidoctorSettings()
+            {
+                Quiet = true
+            },
+            expectedArguments: new[] { "\"input.adoc\"", "--quiet" }
+        );
+
+        yield return TestCase(
+            id: "T21",
+            inputFile: "input.adoc",
+            settings: new AsciidoctorSettings()
+            {
+                Trace = true
+            },
+            expectedArguments: new[] { "\"input.adoc\"", "--trace" }
+        );
+
+        yield return TestCase(
+            id: "T22",
+            inputFile: "input.adoc",
+            settings: new AsciidoctorSettings()
+            {
+                Verbose = true
+            },
+            expectedArguments: new[] { "\"input.adoc\"", "--verbose" }
+        );
+
+        yield return TestCase(
+            id: "T23",
+            inputFile: "input.adoc",
+            settings: new AsciidoctorSettings()
+            {
+                Warnings = true
+            },
+            expectedArguments: new[] { "\"input.adoc\"", "--warnings" }
+        );
+
+        yield return TestCase(
+            id: "T23",
+            inputFile: "input.adoc",
+            settings: new AsciidoctorSettings()
+            {
+                Timings = true
+            },
+            expectedArguments: new[] { "\"input.adoc\"", "--timings" }
+        );
+
+        yield return TestCase(
+            id: "T24",
+            inputFile: "input.adoc",
+            settings: new AsciidoctorSettings()
+                .SetAttribute("Some-Attribute"),
+            expectedArguments: new[] { "\"input.adoc\"", "\"--attribute=Some-Attribute\"" }
+        );
+
+        yield return TestCase(
+            id: "T25",
+            inputFile: "input.adoc",
+            settings: new AsciidoctorSettings()
+                .SetAttribute("Some-Attribute")
+                .SetAttribute("Some-Other-Attribute"),
+            expectedArguments: new[]
+            {
+                "\"input.adoc\"",
+                "\"--attribute=Some-Attribute\"" ,
+                "\"--attribute=Some-Other-Attribute\""
+            }
+        );
+
+        yield return TestCase(
+            id: "T26",
+            inputFile: "input.adoc",
+            settings: new AsciidoctorSettings()
+                .SetAttribute("Some-Attribute", "Some Value")
+                .SetAttribute("Some-Other-Attribute")
+                .SetAttribute("Yet Another Attribute", "Value"),
+            expectedArguments: new[]
+            {
+                "\"input.adoc\"",
+                "\"--attribute=Some-Attribute=Some Value\"" ,
+                "\"--attribute=Some-Other-Attribute\"",
+                "\"--attribute=Yet Another Attribute=Value\""
+            }
+        );
+
+        yield return TestCase(
+            id: "T27",
+            inputFile: "input.adoc",
+            settings: new AsciidoctorSettings()
+                .UnsetAttribute("Some-Attribute"),
+            expectedArguments: new[] { "\"input.adoc\"", "\"--attribute=Some-Attribute!\"" }
+        );
+
+        yield return TestCase(
+            id: "T28",
+            inputFile: "input.adoc",
+            settings: new AsciidoctorSettings()
+                .SetAttribute("Some-Attribute", "Value", @override: false),
+            expectedArguments: new[] { "\"input.adoc\"", "\"--attribute=Some-Attribute@=Value\"" }
+        );
     }
+
 
 
     [Theory]
