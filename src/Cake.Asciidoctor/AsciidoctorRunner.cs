@@ -9,34 +9,33 @@ namespace Cake.Asciidoctor;
 
 internal class AsciidoctorRunner : Tool<AsciidoctorSettings>
 {
-    private readonly AsciidoctorSettings m_Settings;
 
-    public AsciidoctorRunner(IFileSystem fileSystem, ICakeEnvironment environment, IProcessRunner processRunner, IToolLocator tools, AsciidoctorSettings settings)
+    public AsciidoctorRunner(IFileSystem fileSystem, ICakeEnvironment environment, IProcessRunner processRunner, IToolLocator tools)
         : base(fileSystem, environment, processRunner, tools)
-    {
-        m_Settings = settings ?? throw new ArgumentNullException(nameof(settings));
-    }
+    { }
 
 
-    public void Run(FilePath inputFile) => Run(m_Settings, GetArguments(inputFile));
+    public void Run(FilePath inputFile, AsciidoctorSettings settings) => Run(settings, GetArguments(inputFile, settings));
 
 
 
     protected override string GetToolName() => "Asciidoctor";
 
-    protected override IEnumerable<string> GetToolExecutableNames()
+    protected override IEnumerable<string> GetToolExecutableNames() => throw new NotImplementedException();
+
+    protected override IEnumerable<string> GetToolExecutableNames(AsciidoctorSettings settings)
     {
-        return m_Settings.RunWithBundler
+        return settings.RunWithBundler
             ? new[] { "bundle", "bundle.bat" }
             : new[] { "asciidoctor", $"asciidoctor.bat" };
     }
 
 
-    private ProcessArgumentBuilder GetArguments(FilePath inputFile)
+    private ProcessArgumentBuilder GetArguments(FilePath inputFile, AsciidoctorSettings settings)
     {
         var argumentsBuilder = new ProcessArgumentBuilder();
 
-        if (m_Settings.RunWithBundler)
+        if (settings.RunWithBundler)
         {
             argumentsBuilder
                 .Append("exec")
