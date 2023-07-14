@@ -5,7 +5,6 @@ using System.Runtime.InteropServices;
 using Cake.Asciidoctor.Test.TestHelpers;
 using Cake.Core.IO;
 using Cake.Testing;
-using Microsoft.VisualStudio.TestPlatform.TestHost;
 using Xunit;
 
 namespace Cake.Asciidoctor.Test;
@@ -39,7 +38,6 @@ public class AsciidoctorRunnerTest
         m_BundlerPath = m_FileSystem.CreateFile(m_Environment.WorkingDirectory.CombineWithFilePath("bundle")).Path;
         m_ToolLocator.RegisterFile(m_BundlerPath);
     }
-
 
     public static IEnumerable<object[]> ArgumentTestCases()
     {
@@ -292,62 +290,103 @@ public class AsciidoctorRunnerTest
             expectedArguments: new[] { "\"input.adoc\"", "--timings" }
         );
 
-        yield return TestCase(
-            id: "T24",
-            inputFile: "input.adoc",
-            settings: new AsciidoctorSettings()
-                .SetAttribute("Some-Attribute"),
-            expectedArguments: new[] { "\"input.adoc\"", "\"--attribute=Some-Attribute\"" }
-        );
+        {
+            var settings = new AsciidoctorSettings();
+            settings.Attributes.Define("Some-Attribute");
 
-        yield return TestCase(
-            id: "T25",
-            inputFile: "input.adoc",
-            settings: new AsciidoctorSettings()
-                .SetAttribute("Some-Attribute")
-                .SetAttribute("Some-Other-Attribute"),
-            expectedArguments: new[]
+            yield return TestCase(
+                id: "T24",
+                inputFile: "input.adoc",
+                settings: settings,
+                expectedArguments: new[] { "\"input.adoc\"", "\"--attribute=Some-Attribute\"" }
+            );
+        }
+        {
+            var settings = new AsciidoctorSettings();
+            settings.Attributes.Define("Some-Attribute");
+            settings.Attributes.Define("Some-Other-Attribute");
+
+            yield return TestCase(
+                id: "T25",
+                inputFile: "input.adoc",
+                settings: settings,
+                expectedArguments: new[]
+                    {
+                    "\"input.adoc\"",
+                    "\"--attribute=Some-Attribute\"" ,
+                    "\"--attribute=Some-Other-Attribute\""
+                }
+            );
+        }
+
+        {
+            var settings = new AsciidoctorSettings()
             {
-                "\"input.adoc\"",
-                "\"--attribute=Some-Attribute\"" ,
-                "\"--attribute=Some-Other-Attribute\""
-            }
-        );
+                Attributes = new()
+                {
+                    { "Some-Attribute","Some Value" },
+                    { "Another-Attribute",  "Another Value"}
+                }
+            };
 
-        yield return TestCase(
-            id: "T26",
-            inputFile: "input.adoc",
-            settings: new AsciidoctorSettings()
-                .SetAttribute("Some-Attribute", "Some Value")
-                .SetAttribute("Some-Other-Attribute")
-                .SetAttribute("Yet Another Attribute", "Value"),
-            expectedArguments: new[]
-            {
-                "\"input.adoc\"",
-                "\"--attribute=Some-Attribute=Some Value\"" ,
-                "\"--attribute=Some-Other-Attribute\"",
-                "\"--attribute=Yet Another Attribute=Value\""
-            }
-        );
+            yield return TestCase(
+                id: "T27",
+                inputFile: "input.adoc",
+                settings: settings,
+                expectedArguments: new[]
+                {
+                    "\"input.adoc\"",
+                    "\"--attribute=Some-Attribute=\"Some Value\"\"" ,
+                    "\"--attribute=Another-Attribute=\"Another Value\"\""
+                }
+            );
+        }
 
-        yield return TestCase(
-            id: "T27",
-            inputFile: "input.adoc",
-            settings: new AsciidoctorSettings()
-                .UnsetAttribute("Some-Attribute"),
-            expectedArguments: new[] { "\"input.adoc\"", "\"--attribute=Some-Attribute!\"" }
-        );
 
-        yield return TestCase(
-            id: "T28",
-            inputFile: "input.adoc",
-            settings: new AsciidoctorSettings()
-                .SetAttribute("Some-Attribute", "Value", @override: false),
-            expectedArguments: new[] { "\"input.adoc\"", "\"--attribute=Some-Attribute@=Value\"" }
-        );
+        {
+            var settings = new AsciidoctorSettings();
+            settings.Attributes["Some-Attribute"] = "Some Value";
+            settings.Attributes.Define("Some-Other-Attribute");
+            settings.Attributes["Yet Another Attribute"] = "Value";
+
+            yield return TestCase(
+                id: "T27",
+                inputFile: "input.adoc",
+                settings: settings,
+                expectedArguments: new[]
+                {
+                    "\"input.adoc\"",
+                    "\"--attribute=Some-Attribute=\"Some Value\"\"" ,
+                    "\"--attribute=Some-Other-Attribute\"",
+                    "\"--attribute=Yet Another Attribute=Value\""
+                }
+            );
+        }
+
+        {
+            var settings = new AsciidoctorSettings();
+            settings.Attributes.Unset("Some-Attribute");
+
+            yield return TestCase(
+                id: "T28",
+                inputFile: "input.adoc",
+                settings: settings,
+                expectedArguments: new[] { "\"input.adoc\"", "\"--attribute=Some-Attribute!\"" }
+            );
+        }
+
+        {
+            var settings = new AsciidoctorSettings();
+            settings.Attributes.Add("Some-Attribute", "Value", AsciidoctorAttributeOptions.NoOverride);
+
+            yield return TestCase(
+                id: "T29",
+                inputFile: "input.adoc",
+                settings: settings,
+                expectedArguments: new[] { "\"input.adoc\"", "\"--attribute=Some-Attribute@=Value\"" }
+            );
+        }
     }
-
-
 
     [Theory]
     [MemberData(nameof(ArgumentTestCases))]

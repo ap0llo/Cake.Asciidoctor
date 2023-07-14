@@ -1,23 +1,32 @@
-﻿namespace Cake.Asciidoctor;
+﻿using System;
+using System.Linq;
 
-//TODO: Think of a better API to model unset and non-overrideing attribtues
-//TODO: A value containing spaces must be enclosed in quotes, in the form NAME="VALUE WITH SPACES".
-public record AsciidoctorAttribute(string Name, string? Value, bool Override = true)
+namespace Cake.Asciidoctor;
+
+public class AsciidoctorAttribute
 {
-    private bool m_Unset = false;
+    public string Name { get; }
+
+    public string? Value { get; internal set; }
+
+    public AsciidoctorAttributeOptions Options { get; internal set; }
+
+    public bool Unset { get; internal set; } = false;
+
 
     public AsciidoctorAttribute(string name) : this(name, null)
     { }
 
-
-    public AsciidoctorAttribute(string name, bool unset) : this(name)
+    public AsciidoctorAttribute(string name, string? value)
     {
-        m_Unset = true;
+        Name = name;
+        Value = value;
     }
 
+    /// <inheritdoc />
     public override string ToString()
     {
-        if (m_Unset)
+        if (Unset)
         {
             return $"{Name}!";
         }
@@ -27,14 +36,19 @@ public record AsciidoctorAttribute(string Name, string? Value, bool Override = t
             return Name;
         }
 
-        if (Override)
+        var formattedValue = Value;
+        if (formattedValue.Any(char.IsWhiteSpace))
         {
+            formattedValue = @$"""{formattedValue}""";
+        }
 
-            return $"{Name}={Value}";
+        if (Options.HasFlag(AsciidoctorAttributeOptions.NoOverride))
+        {
+            return $"{Name}@={formattedValue}";
         }
         else
         {
-            return $"{Name}@={Value}";
+            return $"{Name}={formattedValue}";
         }
     }
 }

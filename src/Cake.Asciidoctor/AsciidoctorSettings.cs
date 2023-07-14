@@ -8,18 +8,20 @@ namespace Cake.Asciidoctor;
 //TODO: Add documentation/reference to asciidoctor(1)
 public class AsciidoctorSettings : ToolSettings
 {
-    private readonly List<AsciidoctorAttribute> m_Attributes = new();
     private readonly List<string> m_Require = new();
+    private readonly AsciidoctorAttributeCollection m_Attributes = new();
 
     public bool RunWithBundler { get; set; }
 
     public DirectoryPath? BaseDirectory { get; set; }
 
-
     public AsciidoctorSafeMode? SafeMode { get; set; }
 
-
-    public IReadOnlyList<AsciidoctorAttribute> Attributes => m_Attributes;
+    public AsciidoctorAttributeCollection Attributes
+    {
+        get => m_Attributes;
+        init => m_Attributes = value ?? new();
+    }
 
     public string? Backend { get; set; }
 
@@ -56,26 +58,6 @@ public class AsciidoctorSettings : ToolSettings
     public bool Warnings { get; set; }
 
     public bool Timings { get; set; }
-
-
-    public AsciidoctorSettings SetAttribute(string name)
-    {
-        m_Attributes.Add(new AsciidoctorAttribute(name));
-        return this;
-    }
-
-    public AsciidoctorSettings SetAttribute(string name, string value, bool @override = true)
-    {
-        m_Attributes.Add(new AsciidoctorAttribute(name, value, @override));
-        return this;
-    }
-
-    public AsciidoctorSettings UnsetAttribute(string name)
-    {
-        m_Attributes.Add(new AsciidoctorAttribute(name, unset: true));
-        return this;
-    }
-
 
     public AsciidoctorSettings AddRequire(string library)
     {
