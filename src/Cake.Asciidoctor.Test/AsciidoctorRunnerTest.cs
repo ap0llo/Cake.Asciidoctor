@@ -210,8 +210,6 @@ public class AsciidoctorRunnerTest
             },
             expectedArguments: new[] { "\"input.adoc\"", "\"--require=library1\"", "\"--require=library2\"" }
         );
-            expectedArguments: new[] { "\"input.adoc\"", "\"--require=library1\"", "\"--require=library2\"" }
-        );
 
         yield return TestCase(
             id: "T17",
@@ -392,6 +390,29 @@ public class AsciidoctorRunnerTest
                 expectedArguments: new[] { "\"input.adoc\"", "\"--attribute=Some-Attribute@=Value\"" }
             );
         }
+
+
+        // Set "Require" to null (not recommended but the runner should still be able to handle it)
+        yield return TestCase(
+            id: "T30",
+            inputFile: "input.adoc",
+            settings: new AsciidoctorSettings()
+            {
+                Require = null!
+            },
+            expectedArguments: new[] { "\"input.adoc\"" }
+        );
+
+        // Set "Attributes" to null (not recommended but the runner should still be able to handle it)
+        yield return TestCase(
+            id: "T30",
+            inputFile: "input.adoc",
+            settings: new AsciidoctorSettings()
+            {
+                Attributes = null!
+            },
+            expectedArguments: new[] { "\"input.adoc\"" }
+        );
     }
 
     [Theory]

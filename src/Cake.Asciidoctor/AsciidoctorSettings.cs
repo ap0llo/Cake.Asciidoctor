@@ -8,7 +8,7 @@ namespace Cake.Asciidoctor;
 //TODO: Add documentation/reference to asciidoctor(1)
 public class AsciidoctorSettings : ToolSettings
 {
-    private readonly AsciidoctorAttributeCollection m_Attributes = new();
+    private AsciidoctorAttributeCollection m_Attributes = new();
 
     public bool RunWithBundler { get; set; }
 
@@ -16,11 +16,7 @@ public class AsciidoctorSettings : ToolSettings
 
     public AsciidoctorSafeMode? SafeMode { get; set; }
 
-    public AsciidoctorAttributeCollection Attributes
-    {
-        get => m_Attributes;
-        init => m_Attributes = value ?? new();
-    }
+    public AsciidoctorAttributeCollection Attributes { get; set; } = new();
 
     public string? Backend { get; set; }
 
@@ -40,7 +36,7 @@ public class AsciidoctorSettings : ToolSettings
 
     public DirectoryPath? SourceDirectory { get; set; }
 
-    public ICollection<string> Require { get; set; } = new HashSet<string>();   
+    public ICollection<string> Require { get; set; } = new HashSet<string>();
 
     public bool NoHeaderFooter { get; set; }
 

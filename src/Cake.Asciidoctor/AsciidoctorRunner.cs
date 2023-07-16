@@ -54,7 +54,7 @@ internal class AsciidoctorRunner : Tool<AsciidoctorSettings>
             .AppendOptionIfNotNull("out-file", settings.OutFile)
             .AppendOptionIfNotNull("source-dir", settings.SourceDirectory);
 
-        foreach (var library in settings.Require)
+        foreach (var library in settings.Require ?? Enumerable.Empty<string>())
         {
             argumentsBuilder.AppendOptionQuoted("require", library);
         }
@@ -69,7 +69,7 @@ internal class AsciidoctorRunner : Tool<AsciidoctorSettings>
             .AppendSwitchIf("warnings", settings.Warnings)
             .AppendSwitchIf("timings", settings.Timings);
 
-        foreach (var attribute in settings.Attributes)
+        foreach (var attribute in settings.Attributes ?? Enumerable.Empty<AsciidoctorAttribute>())
         {
             argumentsBuilder.AppendOptionQuoted("attribute", attribute.ToString());
         }
