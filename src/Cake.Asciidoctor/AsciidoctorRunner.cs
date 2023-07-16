@@ -42,36 +42,36 @@ internal class AsciidoctorRunner : Tool<AsciidoctorSettings>
 
         argumentsBuilder
             .AppendQuoted(inputFile.ToString())
-            .AppendOptionIfNotNull("base-dir", settings.BaseDirectory)
-            .AppendOptionIfNotNull("safe-mode", settings.SafeMode)
-            .AppendOptionIfNotNull("backend", settings.Backend)
-            .AppendOptionIfNotNull("doctype", settings.Doctype)
-            .AppendOptionIfNotNull("destination-dir", settings.DestinationDirectory)
-            .AppendOptionIfNotNull("template-engine", settings.TemplateEngine)
-            .AppendSwitchIf("embedded", settings.Embedded)
-            .AppendOptionIfNotNull("load-path", settings.LoadPath)
-            .AppendSwitchIf("section-numbers", settings.SectionNumbers)
-            .AppendOptionIfNotNull("out-file", settings.OutFile)
-            .AppendOptionIfNotNull("source-dir", settings.SourceDirectory);
+            .AppendSwitchQuotedIfNotNull("--base-dir", settings.BaseDirectory)
+            .AppendSwitchQuotedIfNotNull("--safe-mode", settings.SafeMode)
+            .AppendSwitchQuotedIfNotNull("--backend", settings.Backend)
+            .AppendSwitchQuotedIfNotNull("--doctype", settings.Doctype)
+            .AppendSwitchQuotedIfNotNull("--destination-dir", settings.DestinationDirectory)
+            .AppendSwitchQuotedIfNotNull("--template-engine", settings.TemplateEngine)
+            .AppendIf("--embedded", settings.Embedded)
+            .AppendSwitchQuotedIfNotNull("--load-path", settings.LoadPath)
+            .AppendIf("--section-numbers", settings.SectionNumbers)
+            .AppendSwitchQuotedIfNotNull("--out-file", settings.OutFile)
+            .AppendSwitchQuotedIfNotNull("--source-dir", settings.SourceDirectory);
 
         foreach (var library in settings.Require ?? Enumerable.Empty<string>())
         {
-            argumentsBuilder.AppendOptionQuoted("require", library);
+            argumentsBuilder.AppendSwitchQuoted("--require", library);
         }
 
         argumentsBuilder
-            .AppendSwitchIf("no-header-footer", settings.NoHeaderFooter)
-            .AppendOptionIfNotNull("template-dir", settings.TemplateDirectory)
-            .AppendOptionIfNotNull("failure-level", settings.FailureLevel, upperCase: true)
-            .AppendSwitchIf("quiet", settings.Quiet)
-            .AppendSwitchIf("trace", settings.Trace)
-            .AppendSwitchIf("verbose", settings.Verbose)
-            .AppendSwitchIf("warnings", settings.Warnings)
-            .AppendSwitchIf("timings", settings.Timings);
+            .AppendIf("--no-header-footer", settings.NoHeaderFooter)
+            .AppendSwitchQuotedIfNotNull("--template-dir", settings.TemplateDirectory)
+            .AppendSwitchQuotedIfNotNull("--failure-level", settings.FailureLevel, upperCase: true)
+            .AppendIf("--quiet", settings.Quiet)
+            .AppendIf("--trace", settings.Trace)
+            .AppendIf("--verbose", settings.Verbose)
+            .AppendIf("--warnings", settings.Warnings)
+            .AppendIf("--timings", settings.Timings);
 
         foreach (var attribute in settings.Attributes ?? Enumerable.Empty<AsciidoctorAttribute>())
         {
-            argumentsBuilder.AppendOptionQuoted("attribute", attribute.ToString());
+            argumentsBuilder.AppendSwitchQuoted("--attribute", attribute.ToString());
         }
 
 

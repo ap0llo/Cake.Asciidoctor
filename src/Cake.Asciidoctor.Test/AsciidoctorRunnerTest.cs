@@ -81,7 +81,7 @@ public class AsciidoctorRunnerTest
             {
                 BaseDirectory = "some-directory"
             },
-            expectedArguments: new[] { "\"input.adoc\"", "\"--base-dir=some-directory\"" }
+            expectedArguments: new[] { "\"input.adoc\"", "--base-dir \"some-directory\"" }
         );
 
         foreach (var safeMode in Enum.GetValues<AsciidoctorSafeMode>())
@@ -93,7 +93,7 @@ public class AsciidoctorRunnerTest
                 {
                     SafeMode = safeMode
                 },
-                expectedArguments: new[] { "\"input.adoc\"", $"--safe-mode={safeMode.ToString().ToLower()}" }
+                expectedArguments: new[] { "\"input.adoc\"", $"--safe-mode {safeMode.ToString().ToLower()}" }
             );
         }
 
@@ -105,7 +105,7 @@ public class AsciidoctorRunnerTest
             {
                 Backend = "some-backend"
             },
-            expectedArguments: new[] { "\"input.adoc\"", "\"--backend=some-backend\"" }
+            expectedArguments: new[] { "\"input.adoc\"", "--backend \"some-backend\"" }
         );
 
         foreach (var doctype in Enum.GetValues<AsciidoctorDoctype>())
@@ -117,7 +117,7 @@ public class AsciidoctorRunnerTest
                 {
                     Doctype = doctype
                 },
-                expectedArguments: new[] { "\"input.adoc\"", $"--doctype={doctype.ToString().ToLower()}" }
+                expectedArguments: new[] { "\"input.adoc\"", $"--doctype {doctype.ToString().ToLower()}" }
             );
         }
 
@@ -128,7 +128,7 @@ public class AsciidoctorRunnerTest
             {
                 DestinationDirectory = "some-destination-directory"
             },
-            expectedArguments: new[] { "\"input.adoc\"", "\"--destination-dir=some-destination-directory\"" }
+            expectedArguments: new[] { "\"input.adoc\"", "--destination-dir \"some-destination-directory\"" }
         );
 
         yield return TestCase(
@@ -138,7 +138,7 @@ public class AsciidoctorRunnerTest
             {
                 TemplateEngine = "my-template-engine"
             },
-            expectedArguments: new[] { "\"input.adoc\"", "\"--template-engine=my-template-engine\"" }
+            expectedArguments: new[] { "\"input.adoc\"", "--template-engine \"my-template-engine\"" }
         );
 
         yield return TestCase(
@@ -158,7 +158,7 @@ public class AsciidoctorRunnerTest
             {
                 LoadPath = "some-load-path"
             },
-            expectedArguments: new[] { "\"input.adoc\"", "\"--load-path=some-load-path\"" }
+            expectedArguments: new[] { "\"input.adoc\"", "--load-path \"some-load-path\"" }
         );
 
         yield return TestCase(
@@ -178,7 +178,7 @@ public class AsciidoctorRunnerTest
             {
                 OutFile = "directory/output.html"
             },
-            expectedArguments: new[] { "\"input.adoc\"", "\"--out-file=directory/output.html\"" }
+            expectedArguments: new[] { "\"input.adoc\"", "--out-file \"directory/output.html\"" }
         );
 
         yield return TestCase(
@@ -188,7 +188,7 @@ public class AsciidoctorRunnerTest
             {
                 SourceDirectory = "some-source-directory"
             },
-            expectedArguments: new[] { "\"input.adoc\"", "\"--source-dir=some-source-directory\"" }
+            expectedArguments: new[] { "\"input.adoc\"", "--source-dir \"some-source-directory\"" }
         );
 
         yield return TestCase(
@@ -198,7 +198,7 @@ public class AsciidoctorRunnerTest
             {
                 Require = new[] { "library1" }
             },
-            expectedArguments: new[] { "\"input.adoc\"", "\"--require=library1\"" }
+            expectedArguments: new[] { "\"input.adoc\"", "--require \"library1\"" }
         );
 
         yield return TestCase(
@@ -208,7 +208,7 @@ public class AsciidoctorRunnerTest
             {
                 Require = new[] { "library1", "library2" }
             },
-            expectedArguments: new[] { "\"input.adoc\"", "\"--require=library1\"", "\"--require=library2\"" }
+            expectedArguments: new[] { "\"input.adoc\"", "--require \"library1\"", "--require \"library2\"" }
         );
 
         yield return TestCase(
@@ -228,7 +228,7 @@ public class AsciidoctorRunnerTest
             {
                 TemplateDirectory = "some-template-dir"
             },
-            expectedArguments: new[] { "\"input.adoc\"", "\"--template-dir=some-template-dir\"" }
+            expectedArguments: new[] { "\"input.adoc\"", "--template-dir \"some-template-dir\"" }
         );
 
         foreach (var failureLevel in Enum.GetValues<AsciidoctorFailureLevel>())
@@ -240,7 +240,7 @@ public class AsciidoctorRunnerTest
                 {
                     FailureLevel = failureLevel
                 },
-                expectedArguments: new[] { "\"input.adoc\"", $"--failure-level={failureLevel.ToString().ToUpper()}" }
+                expectedArguments: new[] { "\"input.adoc\"", $"--failure-level {failureLevel.ToString().ToUpper()}" }
             );
         }
 
@@ -302,7 +302,7 @@ public class AsciidoctorRunnerTest
                 id: "T24",
                 inputFile: "input.adoc",
                 settings: settings,
-                expectedArguments: new[] { "\"input.adoc\"", "\"--attribute=Some-Attribute\"" }
+                expectedArguments: new[] { "\"input.adoc\"", "--attribute \"Some-Attribute\"" }
             );
         }
         {
@@ -317,8 +317,8 @@ public class AsciidoctorRunnerTest
                 expectedArguments: new[]
                     {
                     "\"input.adoc\"",
-                    "\"--attribute=Some-Attribute\"" ,
-                    "\"--attribute=Some-Other-Attribute\""
+                    "--attribute \"Some-Attribute\"" ,
+                    "--attribute \"Some-Other-Attribute\""
                 }
             );
         }
@@ -340,8 +340,8 @@ public class AsciidoctorRunnerTest
                 expectedArguments: new[]
                 {
                     "\"input.adoc\"",
-                    "\"--attribute=Some-Attribute=\"Some Value\"\"" ,
-                    "\"--attribute=Another-Attribute=\"Another Value\"\""
+                    "--attribute \"Some-Attribute=\"Some Value\"\"" ,
+                    "--attribute \"Another-Attribute=\"Another Value\"\""
                 }
             );
         }
@@ -360,9 +360,9 @@ public class AsciidoctorRunnerTest
                 expectedArguments: new[]
                 {
                     "\"input.adoc\"",
-                    "\"--attribute=Some-Attribute=\"Some Value\"\"" ,
-                    "\"--attribute=Some-Other-Attribute\"",
-                    "\"--attribute=Yet Another Attribute=Value\""
+                    "--attribute \"Some-Attribute=\"Some Value\"\"" ,
+                    "--attribute \"Some-Other-Attribute\"",
+                    "--attribute \"Yet Another Attribute=Value\""
                 }
             );
         }
@@ -375,7 +375,7 @@ public class AsciidoctorRunnerTest
                 id: "T28",
                 inputFile: "input.adoc",
                 settings: settings,
-                expectedArguments: new[] { "\"input.adoc\"", "\"--attribute=Some-Attribute!\"" }
+                expectedArguments: new[] { "\"input.adoc\"", "--attribute \"Some-Attribute!\"" }
             );
         }
 
@@ -387,7 +387,7 @@ public class AsciidoctorRunnerTest
                 id: "T29",
                 inputFile: "input.adoc",
                 settings: settings,
-                expectedArguments: new[] { "\"input.adoc\"", "\"--attribute=Some-Attribute@=Value\"" }
+                expectedArguments: new[] { "\"input.adoc\"", "--attribute \"Some-Attribute@=Value\"" }
             );
         }
 
