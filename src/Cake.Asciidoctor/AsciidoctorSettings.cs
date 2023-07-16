@@ -8,7 +8,6 @@ namespace Cake.Asciidoctor;
 //TODO: Add documentation/reference to asciidoctor(1)
 public class AsciidoctorSettings : ToolSettings
 {
-    private readonly List<string> m_Require = new();
     private readonly AsciidoctorAttributeCollection m_Attributes = new();
 
     public bool RunWithBundler { get; set; }
@@ -41,7 +40,7 @@ public class AsciidoctorSettings : ToolSettings
 
     public DirectoryPath? SourceDirectory { get; set; }
 
-    public IReadOnlyList<string> Require => m_Require;
+    public ICollection<string> Require { get; set; } = new HashSet<string>();   
 
     public bool NoHeaderFooter { get; set; }
 
@@ -58,13 +57,4 @@ public class AsciidoctorSettings : ToolSettings
     public bool Warnings { get; set; }
 
     public bool Timings { get; set; }
-
-    public AsciidoctorSettings AddRequire(string library)
-    {
-        if (String.IsNullOrWhiteSpace(library))
-            throw new ArgumentException("Value must not be null or whitespace", nameof(library));
-
-        m_Require.Add(library);
-        return this;
-    }
 }

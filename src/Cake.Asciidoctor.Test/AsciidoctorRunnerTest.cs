@@ -194,16 +194,22 @@ public class AsciidoctorRunnerTest
         yield return TestCase(
             id: "T15",
             inputFile: "input.adoc",
-            settings:
-                new AsciidoctorSettings().AddRequire("library1"),
+            settings: new AsciidoctorSettings()
+            {
+                Require = new[] { "library1" }
+            },
             expectedArguments: new[] { "\"input.adoc\"", "\"--require=library1\"" }
         );
 
         yield return TestCase(
             id: "T16",
             inputFile: "input.adoc",
-            settings:
-                new AsciidoctorSettings().AddRequire("library1").AddRequire("library2"),
+            settings: new AsciidoctorSettings()
+            {
+                Require = new[] { "library1", "library2" }
+            },
+            expectedArguments: new[] { "\"input.adoc\"", "\"--require=library1\"", "\"--require=library2\"" }
+        );
             expectedArguments: new[] { "\"input.adoc\"", "\"--require=library1\"", "\"--require=library2\"" }
         );
 
