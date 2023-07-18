@@ -2,4 +2,4 @@
 
 namespace Cake.Asciidoctor.Test.TestHelpers;
 
-internal record StartedProcess(FilePath FilePath, ProcessSettings Settings);
+public record StartedProcess(FilePath FilePath, ProcessSettings Settings);

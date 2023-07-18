@@ -7,15 +7,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{A13F1150-1A8
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cake.Asciidoctor", "src\Cake.Asciidoctor\Cake.Asciidoctor.csproj", "{C353CA5B-9A27-4B20-A886-0C9C4D0B938F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cake.Asciidoctor.Test", "src\Cake.Asciidoctor.Test\Cake.Asciidoctor.Test.csproj", "{3E1E6E35-67D2-47A8-8E95-5748BBDD727E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cake.Asciidoctor.Test", "src\Cake.Asciidoctor.Test\Cake.Asciidoctor.Test.csproj", "{3E1E6E35-67D2-47A8-8E95-5748BBDD727E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8C4E7483-75A1-42E0-91D6-0643D52567E4}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{C353CA5B-9A27-4B20-A886-0C9C4D0B938F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -26,6 +28,9 @@ Global
 		{3E1E6E35-67D2-47A8-8E95-5748BBDD727E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3E1E6E35-67D2-47A8-8E95-5748BBDD727E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3E1E6E35-67D2-47A8-8E95-5748BBDD727E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{C353CA5B-9A27-4B20-A886-0C9C4D0B938F} = {A13F1150-1A8B-42AF-B5CD-B0DD5FD74BA2}

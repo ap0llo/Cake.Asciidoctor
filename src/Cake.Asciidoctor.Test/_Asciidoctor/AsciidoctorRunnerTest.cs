@@ -12,26 +12,14 @@ namespace Cake.Asciidoctor.Test;
 /// <summary>
 /// Tests for <see cref="AsciidoctorRunner"/>
 /// </summary>
-public class AsciidoctorRunnerTest
+public class AsciidoctorRunnerTest : ToolTestBase
 {
-    private readonly FakeEnvironment m_Environment;
-    private readonly FakeFileSystem m_FileSystem;
-    private readonly FakeProcessRunner m_ProcessRunner;
-    private readonly FakeToolLocator m_ToolLocator;
-
     private readonly FilePath m_AsciiDoctorPath;
     private readonly FilePath m_BundlerPath;
 
 
     public AsciidoctorRunnerTest()
     {
-        m_Environment = RuntimeInformation.IsOSPlatform(OSPlatform.Windows)
-            ? FakeEnvironment.CreateWindowsEnvironment()
-            : FakeEnvironment.CreateUnixEnvironment();
-        m_FileSystem = new FakeFileSystem(m_Environment);
-        m_ProcessRunner = new FakeProcessRunner();
-        m_ToolLocator = new FakeToolLocator(m_Environment);
-
         m_AsciiDoctorPath = m_FileSystem.CreateFile(m_Environment.WorkingDirectory.CombineWithFilePath("asciidoctor")).Path;
         m_ToolLocator.RegisterFile(m_AsciiDoctorPath);
 
@@ -417,7 +405,7 @@ public class AsciidoctorRunnerTest
 
     [Theory]
     [MemberData(nameof(ArgumentTestCases))]
-    public void Run_starts_AsciiDoctor_with_expected_arguments(string id, string inputFile, AsciidoctorSettings settings, IEnumerable<string> expectedArguments)
+    public void Run_starts_Asciidoctor_with_expected_arguments(string id, string inputFile, AsciidoctorSettings settings, IEnumerable<string> expectedArguments)
     {
         // ARRANGE
         _ = id;

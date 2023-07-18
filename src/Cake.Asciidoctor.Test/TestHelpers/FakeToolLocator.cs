@@ -7,7 +7,7 @@ using Cake.Core.Tooling;
 
 namespace Cake.Asciidoctor.Test.TestHelpers;
 
-internal class FakeToolLocator : IToolLocator
+public class FakeToolLocator : IToolLocator
 {
     private readonly StringComparer m_FileNameComparer;
     private readonly List<FilePath> m_Tools = new();

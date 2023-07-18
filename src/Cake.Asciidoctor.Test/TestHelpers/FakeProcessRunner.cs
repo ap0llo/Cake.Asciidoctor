@@ -3,7 +3,7 @@ using Cake.Core.IO;
 
 namespace Cake.Asciidoctor.Test.TestHelpers;
 
-internal class FakeProcessRunner : IProcessRunner
+public class FakeProcessRunner : IProcessRunner
 {
     private readonly List<StartedProcess> m_StartedProcesses = new();
 
