@@ -10,7 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <InternalsVisibleTo Include="Cake.Asciidoctor.Test"/>
+    <InternalsVisibleTo Include="Cake.Asciidoctor.Test" />
   </ItemGroup>
 
 </Project>
