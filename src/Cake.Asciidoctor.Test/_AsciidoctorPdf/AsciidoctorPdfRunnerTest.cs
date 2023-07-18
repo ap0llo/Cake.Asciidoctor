@@ -11,10 +11,11 @@ namespace Cake.Asciidoctor.Test;
 /// <summary>
 /// Tests for <see cref="AsciidoctorPdfRunner"/>
 /// </summary>
-public class AsciidoctorPdfRunnerTest : ToolTestBase
+public class AsciidoctorPdfRunnerTest : AsciidoctorRunnerTestBase<AsciidoctorPdfSettings>
 {
     private readonly FilePath m_AsciiDoctorPdfPath;
     private readonly FilePath m_BundlerPath;
+
 
     public AsciidoctorPdfRunnerTest()
     {
@@ -25,24 +26,32 @@ public class AsciidoctorPdfRunnerTest : ToolTestBase
         m_ToolLocator.RegisterFile(m_BundlerPath);
     }
 
-    public static IEnumerable<object[]> ArgumentTestCases()
+
+    public static IEnumerable<object[]> AsciidoctorPdfArgumentTestCases()
     {
-        object[] TestCase(string id, string inputFile, AsciidoctorPdfSettings settings, IEnumerable<string> expectedArguments)
+        object[] TestCase(string id, string inputFile, AsciidoctorPdfSettings settings, IEnumerable<string> expectedArguments) => new object[] { id, inputFile, settings, expectedArguments };
+
+        //
+        // --doc-type
+        //
+        foreach (var doctype in Enum.GetValues<AsciidoctorPdfDoctype>())
         {
-            return new object[] { id, inputFile, settings, expectedArguments };
+            yield return TestCase(
+                id: $"T07-{doctype}",
+                inputFile: "input.adoc",
+                settings: new()
+                {
+                    Doctype = doctype
+                },
+                expectedArguments: new[] { "\"input.adoc\"", $"--doctype {doctype.ToString().ToLower()}" }
+            );
         }
-
-
-        yield return TestCase(
-            id: "T01",
-            inputFile: "input.adoc",
-            settings: new AsciidoctorPdfSettings(),
-            expectedArguments: new[] { "\"input.adoc\"" }
-        );
     }
 
+
     [Theory]
-    [MemberData(nameof(ArgumentTestCases))]
+    [MemberData(nameof(CommonArgumentTestCases))]
+    [MemberData(nameof(AsciidoctorPdfArgumentTestCases))]
     public void Run_starts_AsciidoctorPdf_with_expected_arguments(string id, string inputFile, AsciidoctorPdfSettings settings, IEnumerable<string> expectedArguments)
     {
         // ARRANGE
@@ -73,5 +82,4 @@ public class AsciidoctorPdfRunnerTest : ToolTestBase
             }
         );
     }
-
 }

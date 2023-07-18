@@ -2,6 +2,5 @@
 
 public class AsciidoctorPdfSettings : AsciidoctorSettingsBase
 {
-    //TODO: Model CLI of asciidoctor-pdf
-
+    public AsciidoctorPdfDoctype? Doctype { get; set; }
 }
