@@ -6,12 +6,8 @@ using Cake.Core.Tooling;
 namespace Cake.Asciidoctor;
 
 //TODO: Add documentation/reference to asciidoctor(1)
-public class AsciidoctorSettings : ToolSettings
+public class AsciidoctorSettings : AsciidoctorSettingsBase
 {
-    private AsciidoctorAttributeCollection m_Attributes = new();
-
-    public bool RunWithBundler { get; set; }
-
     public DirectoryPath? BaseDirectory { get; set; }
 
     public AsciidoctorSafeMode? SafeMode { get; set; }
