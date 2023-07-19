@@ -1,0 +1,100 @@
+﻿namespace Cake.Asciidoctor
+{
+    public static class AsciidoctorAliases
+    {
+        public static void Asciidoctor(this Cake.Core.ICakeContext context, Cake.Core.IO.FilePath file) { }
+        public static void Asciidoctor(this Cake.Core.ICakeContext context, Cake.Core.IO.FilePath file, Cake.Asciidoctor.AsciidoctorSettings? settings) { }
+        public static void AsciidoctorPdf(this Cake.Core.ICakeContext context, Cake.Core.IO.FilePath file) { }
+        public static void AsciidoctorPdf(this Cake.Core.ICakeContext context, Cake.Core.IO.FilePath file, Cake.Asciidoctor.AsciidoctorPdfSettings? settings) { }
+    }
+    public class AsciidoctorAttribute
+    {
+        public AsciidoctorAttribute(string name) { }
+        public AsciidoctorAttribute(string name, string? value) { }
+        public string Name { get; }
+        public Cake.Asciidoctor.AsciidoctorAttributeOptions Options { get; }
+        public bool Unset { get; }
+        public string? Value { get; }
+        public override string ToString() { }
+    }
+    public class AsciidoctorAttributeCollection : System.Collections.Generic.IEnumerable<Cake.Asciidoctor.AsciidoctorAttribute>, System.Collections.IEnumerable
+    {
+        public AsciidoctorAttributeCollection() { }
+        public string? this[string name] { get; set; }
+        public void Add(string name) { }
+        public void Add(string name, string value) { }
+        public void Add(string name, string value, Cake.Asciidoctor.AsciidoctorAttributeOptions options) { }
+        public void Define(string name) { }
+        public System.Collections.Generic.IEnumerator<Cake.Asciidoctor.AsciidoctorAttribute> GetEnumerator() { }
+        public void Remove(string name) { }
+        public void Unset(string name) { }
+    }
+    [System.Flags]
+    public enum AsciidoctorAttributeOptions
+    {
+        Default = 0,
+        NoOverride = 1,
+    }
+    public enum AsciidoctorDoctype
+    {
+        Article = 0,
+        Book = 1,
+        Manpage = 2,
+        Inline = 3,
+    }
+    public enum AsciidoctorFailureLevel
+    {
+        Info = 0,
+        Warning = 1,
+        Error = 2,
+        Fatal = 3,
+    }
+    public enum AsciidoctorPdfDoctype
+    {
+        Article = 0,
+        Book = 1,
+        Manpage = 2,
+    }
+    public class AsciidoctorPdfSettings : Cake.Asciidoctor.AsciidoctorSettingsBase
+    {
+        public AsciidoctorPdfSettings() { }
+        public Cake.Asciidoctor.AsciidoctorPdfDoctype? Doctype { get; set; }
+    }
+    public enum AsciidoctorSafeMode
+    {
+        Unsafe = 0,
+        Safe = 1,
+        Server = 2,
+        Secure = 3,
+    }
+    public class AsciidoctorSettings : Cake.Asciidoctor.AsciidoctorSettingsBase
+    {
+        public AsciidoctorSettings() { }
+        public string? Backend { get; set; }
+        public Cake.Asciidoctor.AsciidoctorDoctype? Doctype { get; set; }
+        public bool NoHeaderFooter { get; set; }
+        public string? TemplateEngine { get; set; }
+    }
+    public abstract class AsciidoctorSettingsBase : Cake.Core.Tooling.ToolSettings
+    {
+        protected AsciidoctorSettingsBase() { }
+        public Cake.Asciidoctor.AsciidoctorAttributeCollection Attributes { get; set; }
+        public Cake.Core.IO.DirectoryPath? BaseDirectory { get; set; }
+        public Cake.Core.IO.DirectoryPath? DestinationDirectory { get; set; }
+        public bool Embedded { get; set; }
+        public Cake.Asciidoctor.AsciidoctorFailureLevel? FailureLevel { get; set; }
+        public Cake.Core.IO.DirectoryPath? LoadPath { get; set; }
+        public Cake.Core.IO.FilePath? OutFile { get; set; }
+        public bool Quiet { get; set; }
+        public System.Collections.Generic.ICollection<string> Require { get; set; }
+        public bool RunWithBundler { get; set; }
+        public Cake.Asciidoctor.AsciidoctorSafeMode? SafeMode { get; set; }
+        public bool SectionNumbers { get; set; }
+        public Cake.Core.IO.DirectoryPath? SourceDirectory { get; set; }
+        public Cake.Core.IO.DirectoryPath? TemplateDirectory { get; set; }
+        public bool Timings { get; set; }
+        public bool Trace { get; set; }
+        public bool Verbose { get; set; }
+        public bool Warnings { get; set; }
+    }
+}
