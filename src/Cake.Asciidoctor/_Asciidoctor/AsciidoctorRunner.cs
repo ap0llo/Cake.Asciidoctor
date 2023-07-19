@@ -24,8 +24,7 @@ internal class AsciidoctorRunner : AsciidoctorTool<AsciidoctorSettings>
         argumentsBuilder
             .AppendSwitchQuotedIfNotNull("--backend", settings.Backend)
             .AppendSwitchQuotedIfNotNull("--doctype", settings.Doctype)
-            .AppendSwitchQuotedIfNotNull("--template-engine", settings.TemplateEngine)
-            .AppendIf("--no-header-footer", settings.NoHeaderFooter);
+            .AppendSwitchQuotedIfNotNull("--template-engine", settings.TemplateEngine);
 
         return argumentsBuilder;
     }

@@ -76,7 +76,6 @@
         public AsciidoctorSettings() { }
         public string? Backend { get; set; }
         public Cake.Asciidoctor.AsciidoctorDoctype? Doctype { get; set; }
-        public bool NoHeaderFooter { get; set; }
         public string? TemplateEngine { get; set; }
     }
     public abstract class AsciidoctorSettingsBase : Cake.Core.Tooling.ToolSettings

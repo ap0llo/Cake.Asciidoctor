@@ -71,24 +71,6 @@ public class AsciidoctorRunnerTest : AsciidoctorRunnerTestBase<AsciidoctorSettin
             },
             expectedArguments: new[] { "\"input.adoc\"", "--template-engine \"my-template-engine\"" }
         );
-
-
-        //
-        // --no-header-footer
-        //
-        yield return TestCase(
-            id: "T204",
-            inputFile: "input.adoc",
-            settings: new()
-            {
-                NoHeaderFooter = true
-            },
-            expectedArguments: new[] { "\"input.adoc\"", "--no-header-footer" }
-        );
-
-
-
-
     }
 
 

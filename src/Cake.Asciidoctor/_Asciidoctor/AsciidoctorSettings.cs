@@ -21,7 +21,4 @@ public class AsciidoctorSettings : AsciidoctorSettingsBase
     /// The template engine to use for custom converter templates (command line option <c>--template-engine</c>)
     /// </summary>
     public string? TemplateEngine { get; set; }
-
-    //TODO: This is redundant an the same as embedded
-    public bool NoHeaderFooter { get; set; }
 }
