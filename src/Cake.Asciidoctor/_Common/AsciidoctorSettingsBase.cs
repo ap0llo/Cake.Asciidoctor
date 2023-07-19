@@ -23,7 +23,7 @@ public abstract class AsciidoctorSettingsBase : ToolSettings
     public AsciidoctorSafeMode? SafeMode { get; set; }
 
     /// <summary>
-    /// The attributes to set, override or unset when converting documents (corresponds to command line option <c>--attribute</c>)
+    /// The attributes to set, override or unset when converting documents (command line option <c>--attribute</c>)
     /// </summary>
     public AsciidoctorAttributeCollection Attributes { get; set; } = new();
 
@@ -38,10 +38,9 @@ public abstract class AsciidoctorSettingsBase : ToolSettings
     public bool Embedded { get; set; }
 
     /// <summary>
-    /// Specifies an additional path to the load path where extensions can be loaded from (corresponds to command line option <c>--load-path</c>)
+    /// Specifies additional path where extensions can be loaded from (command line option <c>--load-path</c>)
     /// </summary>
-    //TODO: This option may be specified more than once
-    public DirectoryPath? LoadPath { get; set; }
+    public ICollection<DirectoryPath> LoadPaths { get; set; } = new HashSet<DirectoryPath>();
 
     /// <summary>
     /// When set to <c>true</c>, enables automatic numbering of sections (command line option <c>--section-numbers</c>).
@@ -59,15 +58,14 @@ public abstract class AsciidoctorSettingsBase : ToolSettings
     public DirectoryPath? SourceDirectory { get; set; }
 
     /// <summary>
-    /// Specifies additional library to load before converting the input document (corresponds to command line option <c>--require</c>)
+    /// Specifies additional library to load before converting the input document (command line option <c>--require</c>)
     /// </summary>
     public ICollection<string> Require { get; set; } = new HashSet<string>();
 
     /// <summary>
-    /// Specifies the path of directory containing custom converted templates (command line option <c>--template-dir</c>)
+    /// Specifies the paths of directories containing custom converted templates (command line option <c>--template-dir</c>)
     /// </summary>
-    //TODO: This option may be specified more than once
-    public DirectoryPath? TemplateDirectory { get; set; }
+    public ICollection<DirectoryPath> TemplateDirectories { get; set; } = new HashSet<DirectoryPath>();
 
     /// <summary>
     /// The minimual log level that causes the document conversion to fail (command line option <c>--failure-level</c>)

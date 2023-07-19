@@ -86,7 +86,7 @@
         public Cake.Core.IO.DirectoryPath? DestinationDirectory { get; set; }
         public bool Embedded { get; set; }
         public Cake.Asciidoctor.AsciidoctorFailureLevel? FailureLevel { get; set; }
-        public Cake.Core.IO.DirectoryPath? LoadPath { get; set; }
+        public System.Collections.Generic.ICollection<Cake.Core.IO.DirectoryPath> LoadPaths { get; set; }
         public Cake.Core.IO.FilePath? OutFile { get; set; }
         public bool Quiet { get; set; }
         public System.Collections.Generic.ICollection<string> Require { get; set; }
@@ -94,7 +94,7 @@
         public Cake.Asciidoctor.AsciidoctorSafeMode? SafeMode { get; set; }
         public bool SectionNumbers { get; set; }
         public Cake.Core.IO.DirectoryPath? SourceDirectory { get; set; }
-        public Cake.Core.IO.DirectoryPath? TemplateDirectory { get; set; }
+        public System.Collections.Generic.ICollection<Cake.Core.IO.DirectoryPath> TemplateDirectories { get; set; }
         public bool Timings { get; set; }
         public bool Trace { get; set; }
         public bool Verbose { get; set; }

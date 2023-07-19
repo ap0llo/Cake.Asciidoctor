@@ -48,17 +48,26 @@ internal abstract class AsciidoctorTool<T> : Tool<T> where T : AsciidoctorSettin
             .AppendSwitchQuotedIfNotNull("--safe-mode", settings.SafeMode)
             .AppendSwitchQuotedIfNotNull("--destination-dir", settings.DestinationDirectory)
             .AppendIf("--embedded", settings.Embedded)
-            .AppendSwitchQuotedIfNotNull("--load-path", settings.LoadPath)
             .AppendIf("--section-numbers", settings.SectionNumbers)
             .AppendSwitchQuotedIfNotNull("--out-file", settings.OutFile)
             .AppendSwitchQuotedIfNotNull("--source-dir", settings.SourceDirectory)
-            .AppendSwitchQuotedIfNotNull("--template-dir", settings.TemplateDirectory)
             .AppendSwitchQuotedIfNotNull("--failure-level", settings.FailureLevel, upperCase: true)
             .AppendIf("--quiet", settings.Quiet)
             .AppendIf("--trace", settings.Trace)
             .AppendIf("--verbose", settings.Verbose)
             .AppendIf("--warnings", settings.Warnings)
             .AppendIf("--timings", settings.Timings);
+
+
+        foreach (var templateDirectory in settings.TemplateDirectories ?? Enumerable.Empty<DirectoryPath>())
+        {
+            argumentsBuilder.AppendSwitchQuoted("--template-dir", templateDirectory);
+        }
+
+        foreach (var loadPath in settings.LoadPaths ?? Enumerable.Empty<DirectoryPath>())
+        {
+            argumentsBuilder.AppendSwitchQuoted("--load-path", loadPath);
+        }
 
         foreach (var library in settings.Require ?? Enumerable.Empty<string>())
         {

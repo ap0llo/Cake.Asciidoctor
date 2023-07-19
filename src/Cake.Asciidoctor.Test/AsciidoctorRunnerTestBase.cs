@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Cake.Asciidoctor.Test.TestHelpers;
+using Cake.Core.IO;
 
 namespace Cake.Asciidoctor.Test;
 
@@ -103,21 +104,66 @@ public abstract class AsciidoctorRunnerTestBase<T> : ToolTestBase where T : Asci
         //
         // --load-path
         //
+        {
+            var settings = new T();
+            settings.LoadPaths.Add("some-load-path");
+
+            yield return TestCase(
+                id: "T108",
+                inputFile: "input.adoc",
+                settings,
+                expectedArguments: new[] { "\"input.adoc\"", "--load-path \"some-load-path\"" }
+            );
+
+        }
+
         yield return TestCase(
-            id: "T108",
+            id: "T109",
             inputFile: "input.adoc",
             settings: new()
             {
-                LoadPath = "some-load-path"
+                LoadPaths = new DirectoryPath[]
+                {
+                    "some-load-path"
+                }
             },
             expectedArguments: new[] { "\"input.adoc\"", "--load-path \"some-load-path\"" }
         );
+
+
+        yield return TestCase(
+            id: "T110",
+            inputFile: "input.adoc",
+            settings: new()
+            {
+                LoadPaths = new DirectoryPath[]
+                {
+                    "some-load-path",
+                    "another-load-path"
+                }
+            },
+            expectedArguments: new[] { "\"input.adoc\"", "--load-path \"some-load-path\"", "--load-path \"another-load-path\"" }
+        );
+
+        // Set "LoadPaths" to null (not recommended but the runner should still be able to handle it)
+
+
+        yield return TestCase(
+            id: "T111",
+            inputFile: "input.adoc",
+            settings: new()
+            {
+                LoadPaths = null!
+            },
+            expectedArguments: new[] { "\"input.adoc\"" }
+        );
+
 
         //
         // --section-numbers
         //
         yield return TestCase(
-            id: "T109",
+            id: "T112",
             inputFile: "input.adoc",
             settings: new()
             {
@@ -130,7 +176,7 @@ public abstract class AsciidoctorRunnerTestBase<T> : ToolTestBase where T : Asci
         // --out-file
         //
         yield return TestCase(
-            id: "T110",
+            id: "T113",
             inputFile: "input.adoc",
             settings: new()
             {
@@ -143,7 +189,7 @@ public abstract class AsciidoctorRunnerTestBase<T> : ToolTestBase where T : Asci
         // --source-dir
         //
         yield return TestCase(
-            id: "T111",
+            id: "T114",
             inputFile: "input.adoc",
             settings: new()
             {
@@ -156,7 +202,7 @@ public abstract class AsciidoctorRunnerTestBase<T> : ToolTestBase where T : Asci
         // --require
         //
         yield return TestCase(
-            id: "T112",
+            id: "T115",
             inputFile: "input.adoc",
             settings: new()
             {
@@ -166,7 +212,7 @@ public abstract class AsciidoctorRunnerTestBase<T> : ToolTestBase where T : Asci
         );
 
         yield return TestCase(
-            id: "T113",
+            id: "T116",
             inputFile: "input.adoc",
             settings: new()
             {
@@ -177,7 +223,7 @@ public abstract class AsciidoctorRunnerTestBase<T> : ToolTestBase where T : Asci
 
         // Set "Require" to null (not recommended but the runner should still be able to handle it)
         yield return TestCase(
-            id: "T114",
+            id: "T117",
             inputFile: "input.adoc",
             settings: new()
             {
@@ -190,13 +236,37 @@ public abstract class AsciidoctorRunnerTestBase<T> : ToolTestBase where T : Asci
         // --template-dir
         //
         yield return TestCase(
-            id: "T115",
+            id: "T118",
             inputFile: "input.adoc",
             settings: new()
             {
-                TemplateDirectory = "some-template-dir"
+                TemplateDirectories = new DirectoryPath[] { "some-template-dir" }
             },
             expectedArguments: new[] { "\"input.adoc\"", "--template-dir \"some-template-dir\"" }
+        );
+
+        {
+            var settings = new T();
+            settings.TemplateDirectories.Add("some-template-dir");
+            settings.TemplateDirectories.Add("some-other-template-dir");
+
+            yield return TestCase(
+                id: "T119",
+                inputFile: "input.adoc",
+                settings,
+                expectedArguments: new[] { "\"input.adoc\"", "--template-dir \"some-template-dir\"", "--template-dir \"some-other-template-dir\"" }
+            );
+        }
+
+        // Set "TemplateDirectories" to null (not recommended but the runner should still be able to handle it)
+        yield return TestCase(
+            id: "T120",
+            inputFile: "input.adoc",
+            settings: new()
+            {
+                TemplateDirectories = null!
+            },
+            expectedArguments: new[] { "\"input.adoc\"" }
         );
 
         //
@@ -205,7 +275,7 @@ public abstract class AsciidoctorRunnerTestBase<T> : ToolTestBase where T : Asci
         foreach (var failureLevel in Enum.GetValues<AsciidoctorFailureLevel>())
         {
             yield return TestCase(
-                id: $"T116-{failureLevel}",
+                id: $"T121-{failureLevel}",
                 inputFile: "input.adoc",
                 settings: new()
                 {
@@ -219,7 +289,7 @@ public abstract class AsciidoctorRunnerTestBase<T> : ToolTestBase where T : Asci
         // --quiet
         //
         yield return TestCase(
-            id: "T117",
+            id: "T122",
             inputFile: "input.adoc",
             settings: new()
             {
@@ -232,7 +302,7 @@ public abstract class AsciidoctorRunnerTestBase<T> : ToolTestBase where T : Asci
         // --trace
         //
         yield return TestCase(
-            id: "T118",
+            id: "T123",
             inputFile: "input.adoc",
             settings: new()
             {
@@ -246,7 +316,7 @@ public abstract class AsciidoctorRunnerTestBase<T> : ToolTestBase where T : Asci
         // --verbose
         //
         yield return TestCase(
-            id: "T119",
+            id: "T124",
             inputFile: "input.adoc",
             settings: new()
             {
@@ -259,7 +329,7 @@ public abstract class AsciidoctorRunnerTestBase<T> : ToolTestBase where T : Asci
         // --warnings
         //
         yield return TestCase(
-            id: "T120",
+            id: "T125",
             inputFile: "input.adoc",
             settings: new()
             {
@@ -272,7 +342,7 @@ public abstract class AsciidoctorRunnerTestBase<T> : ToolTestBase where T : Asci
         // --timings
         //
         yield return TestCase(
-            id: "T121",
+            id: "T126",
             inputFile: "input.adoc",
             settings: new()
             {
@@ -290,7 +360,7 @@ public abstract class AsciidoctorRunnerTestBase<T> : ToolTestBase where T : Asci
             settings.Attributes.Define("Some-Attribute");
 
             yield return TestCase(
-                id: "T122",
+                id: "T127",
                 inputFile: "input.adoc",
                 settings: settings,
                 expectedArguments: new[] { "\"input.adoc\"", "--attribute \"Some-Attribute\"" }
@@ -303,7 +373,7 @@ public abstract class AsciidoctorRunnerTestBase<T> : ToolTestBase where T : Asci
             settings.Attributes.Define("Some-Other-Attribute");
 
             yield return TestCase(
-                id: "T123",
+                id: "T128",
                 inputFile: "input.adoc",
                 settings: settings,
                 expectedArguments: new[]
@@ -326,7 +396,7 @@ public abstract class AsciidoctorRunnerTestBase<T> : ToolTestBase where T : Asci
             };
 
             yield return TestCase(
-                id: "T124",
+                id: "T129",
                 inputFile: "input.adoc",
                 settings: settings,
                 expectedArguments: new[]
@@ -345,7 +415,7 @@ public abstract class AsciidoctorRunnerTestBase<T> : ToolTestBase where T : Asci
             settings.Attributes["Yet Another Attribute"] = "Value";
 
             yield return TestCase(
-                id: "T125",
+                id: "T130",
                 inputFile: "input.adoc",
                 settings: settings,
                 expectedArguments: new[]
@@ -363,7 +433,7 @@ public abstract class AsciidoctorRunnerTestBase<T> : ToolTestBase where T : Asci
             settings.Attributes.Unset("Some-Attribute");
 
             yield return TestCase(
-                id: "T126",
+                id: "T131",
                 inputFile: "input.adoc",
                 settings: settings,
                 expectedArguments: new[] { "\"input.adoc\"", "--attribute \"Some-Attribute!\"" }
@@ -375,7 +445,7 @@ public abstract class AsciidoctorRunnerTestBase<T> : ToolTestBase where T : Asci
             settings.Attributes.Add("Some-Attribute", "Value", AsciidoctorAttributeOptions.NoOverride);
 
             yield return TestCase(
-                id: "T127",
+                id: "T132",
                 inputFile: "input.adoc",
                 settings: settings,
                 expectedArguments: new[] { "\"input.adoc\"", "--attribute \"Some-Attribute@=Value\"" }
@@ -384,7 +454,7 @@ public abstract class AsciidoctorRunnerTestBase<T> : ToolTestBase where T : Asci
 
         // Set "Attributes" to null (not recommended but the runner should still be able to handle it)
         yield return TestCase(
-            id: "T128",
+            id: "T133",
             inputFile: "input.adoc",
             settings: new()
             {
