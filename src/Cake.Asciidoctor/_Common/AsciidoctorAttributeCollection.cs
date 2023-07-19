@@ -4,6 +4,9 @@ using System.Collections.Generic;
 
 namespace Cake.Asciidoctor;
 
+/// <summary>
+/// The collection of attributes being passed to Asciidoctor
+/// </summary>
 public class AsciidoctorAttributeCollection : IEnumerable<AsciidoctorAttribute>
 {
     private readonly Dictionary<string, AsciidoctorAttribute> m_Attributes = new(StringComparer.Ordinal);
@@ -33,19 +36,25 @@ public class AsciidoctorAttributeCollection : IEnumerable<AsciidoctorAttribute>
     IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 
     /// <summary>
-    /// Adds the specified attribute with an empty name.
+    /// Adds the specified attribute with an empty value.
     /// This method is equivalent to <see cref="Define(string)"/>.
     /// </summary>
+    /// <param name="name">The attribute name.</param>
     public void Add(string name) => Define(name);
 
     /// <summary>
-    /// Adds the specified attribute.
+    /// Adds the specified attribute with the specified value.
     /// </summary>
+    /// <param name="name">The attribute name.</param>
+    /// <param name="value">The attribute value.</param>
     public void Add(string name, string value) => Add(name, value, AsciidoctorAttributeOptions.Default);
 
     /// <summary>
     /// Adds the specified attribute with the specified options.
     /// </summary>
+    /// <param name="name">The attribute name.</param>
+    /// <param name="value">The attribute value.</param>
+    /// <param name="options">The options to set for the attribute.</param>
     public void Add(string name, string value, AsciidoctorAttributeOptions options)
     {
         var attribute = new AsciidoctorAttribute(name, value)
@@ -61,8 +70,9 @@ public class AsciidoctorAttributeCollection : IEnumerable<AsciidoctorAttribute>
     /// </summary>
     /// <remarks>
     /// If the attribute was already added to this collection, the attribute's value is set to an empty value.
-    /// Also, if we attribute was previously added as "unset attribute" via <see cref="Unset(string)"/>, it will be converted to a regular attribute.
+    /// Also, if the attribute was previously added as "unset attribute" via <see cref="Unset(string)"/>, it will be converted to a regular attribute.
     /// </remarks>
+    /// <param name="name">The attribute name.</param>
     public void Define(string name)
     {
         var attribute = GetOrAdd(name);
@@ -74,13 +84,14 @@ public class AsciidoctorAttributeCollection : IEnumerable<AsciidoctorAttribute>
     /// Unsets the specified attribute.
     /// </summary>
     /// <remarks>
-    /// Marking an attribute as an "unset attribute" tells Asciidoctor to undefine the attribute in case it was already defined in the source file.
+    /// Marking an attribute as an "unset attribute" tells Asciidoctor to remove the attribute value in case it was already defined in the input file.
     /// For example, <c>Unset("Name")</c> will result in an <c>NAME!</c> commandline argument to be passed to Asciidoctor.
     /// <para>
     /// If the attribute was already added to this collection, unsetting the attribute will remove the attribute's value,
-    /// If the attribute was previously added, all attribute options (see <see cref="AsciidoctorAttributeOptions"/>) will be reset to <see cref="AsciidoctorAttributeOptions.Default"/>.
+    /// and retset the attribute options to <see cref="AsciidoctorAttributeOptions.Default"/>.
     /// </para>
     /// </remarks>
+    /// <param name="name">The name of the attribute to unset</param>
     public void Unset(string name)
     {
         var attribute = GetOrAdd(name);

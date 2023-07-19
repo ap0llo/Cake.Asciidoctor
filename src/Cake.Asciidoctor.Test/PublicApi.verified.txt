@@ -1,16 +1,20 @@
 ﻿namespace Cake.Asciidoctor
 {
+    [Cake.Core.Annotations.CakeAliasCategory("Asciidoctor")]
+    [Cake.Core.Annotations.CakeNamespaceImport("Cake.Asciidoctor")]
     public static class AsciidoctorAliases
     {
-        public static void Asciidoctor(this Cake.Core.ICakeContext context, Cake.Core.IO.FilePath file) { }
-        public static void Asciidoctor(this Cake.Core.ICakeContext context, Cake.Core.IO.FilePath file, Cake.Asciidoctor.AsciidoctorSettings? settings) { }
-        public static void AsciidoctorPdf(this Cake.Core.ICakeContext context, Cake.Core.IO.FilePath file) { }
-        public static void AsciidoctorPdf(this Cake.Core.ICakeContext context, Cake.Core.IO.FilePath file, Cake.Asciidoctor.AsciidoctorPdfSettings? settings) { }
+        [Cake.Core.Annotations.CakeMethodAlias]
+        public static void Asciidoctor(this Cake.Core.ICakeContext context, Cake.Core.IO.FilePath inputFile) { }
+        [Cake.Core.Annotations.CakeMethodAlias]
+        public static void Asciidoctor(this Cake.Core.ICakeContext context, Cake.Core.IO.FilePath inputFile, Cake.Asciidoctor.AsciidoctorSettings? settings) { }
+        [Cake.Core.Annotations.CakeMethodAlias]
+        public static void AsciidoctorPdf(this Cake.Core.ICakeContext context, Cake.Core.IO.FilePath inputFile) { }
+        [Cake.Core.Annotations.CakeMethodAlias]
+        public static void AsciidoctorPdf(this Cake.Core.ICakeContext context, Cake.Core.IO.FilePath inputFile, Cake.Asciidoctor.AsciidoctorPdfSettings? settings) { }
     }
     public class AsciidoctorAttribute
     {
-        public AsciidoctorAttribute(string name) { }
-        public AsciidoctorAttribute(string name, string? value) { }
         public string Name { get; }
         public Cake.Asciidoctor.AsciidoctorAttributeOptions Options { get; }
         public bool Unset { get; }

@@ -1,26 +1,57 @@
 ﻿using Cake.Core;
+using Cake.Core.Annotations;
 using Cake.Core.IO;
 
 namespace Cake.Asciidoctor;
 
-//TODO: Add Cake alias attributes
+/// <summary>
+/// Provides functionality for interacting with Asciidoctor and Asciidoctor PDF
+/// </summary>
+[CakeAliasCategory("Asciidoctor")]
+[CakeNamespaceImport("Cake.Asciidoctor")]
 public static class AsciidoctorAliases
 {
-    public static void Asciidoctor(this ICakeContext context, FilePath file) => context.Asciidoctor(file, null);
+    /// <summary>
+    /// Runs Asciidoctor to convert the specified input file with the default settings.
+    /// </summary>
+    /// <param name="context">The <see cref="ICakeContext"/>.</param>
+    /// <param name="inputFile">The path of the AsciiDoc file to convert.</param>
+    [CakeMethodAlias]
+    public static void Asciidoctor(this ICakeContext context, FilePath inputFile) => context.Asciidoctor(inputFile, null);
 
-    public static void Asciidoctor(this ICakeContext context, FilePath file, AsciidoctorSettings? settings)
+    /// <summary>
+    /// Runs Asciidoctor to convert the specified input file with the specified settings.
+    /// </summary>
+    /// <param name="context">The <see cref="ICakeContext"/>.</param>
+    /// <param name="inputFile">The path of the AsciiDoc file to convert.</param>
+    /// <param name="settings">Optional parameters specified as <see cref="AsciidoctorSettings"/>.</param>
+    [CakeMethodAlias]
+    public static void Asciidoctor(this ICakeContext context, FilePath inputFile, AsciidoctorSettings? settings)
     {
         settings ??= new();
         var runner = new AsciidoctorRunner(context.FileSystem, context.Environment, context.ProcessRunner, context.Tools);
-        runner.Run(file, settings);
+        runner.Run(inputFile, settings);
     }
 
-    public static void AsciidoctorPdf(this ICakeContext context, FilePath file) => context.AsciidoctorPdf(file, null);
+    /// <summary>
+    /// Runs Asciidoctor PDF to convert the specified input file to PDF with the default settings.
+    /// </summary>
+    /// <param name="context">The <see cref="ICakeContext"/>.</param>
+    /// <param name="inputFile">The path of the AsciiDoc file to convert.</param>
+    [CakeMethodAlias]
+    public static void AsciidoctorPdf(this ICakeContext context, FilePath inputFile) => context.AsciidoctorPdf(inputFile, null);
 
-    public static void AsciidoctorPdf(this ICakeContext context, FilePath file, AsciidoctorPdfSettings? settings)
+    /// <summary>
+    /// Runs Asciidoctor PDF to convert the specified input file to PDF with the specified settings.
+    /// </summary>
+    /// <param name="context">The <see cref="ICakeContext"/>.</param>
+    /// <param name="inputFile">The path of the AsciiDoc file to convert.</param>
+    /// /// <param name="settings">Optional parameters specified as <see cref="AsciidoctorPdfSettings"/>.</param>
+    [CakeMethodAlias]
+    public static void AsciidoctorPdf(this ICakeContext context, FilePath inputFile, AsciidoctorPdfSettings? settings)
     {
         settings ??= new();
         var runner = new AsciidoctorPdfRunner(context.FileSystem, context.Environment, context.ProcessRunner, context.Tools);
-        runner.Run(file, settings);
+        runner.Run(inputFile, settings);
     }
 }

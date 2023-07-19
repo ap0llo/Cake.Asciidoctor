@@ -35,9 +35,9 @@
         <Authors>Andreas Gruenwald</Authors>
 		<PackageProjectUrl>https://github.com/ap0llo/Cake.Asciidoctor</PackageProjectUrl>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
-		<Description>ake addin for Asciidoctor and Asciidoctor PDF</Description>
+		<Description>Cake addin for Asciidoctor and Asciidoctor PDF</Description>
 		<Copyright>Copyright (c) 2023, Andreas Gruenwald</Copyright>
-		<PackageTags>cake;build;cake-build;cake-addin</PackageTags>
+		<PackageTags>cake;build;cake-build;cake-addin;asciidoc;asciidoctor</PackageTags>
 	</PropertyGroup>
 
 	<!-- Nerdbank.GitVersioning -->
