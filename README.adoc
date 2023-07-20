@@ -1,0 +1,148 @@
+= Cake.Asciidoctor
+
+:link-cake: link:https://cakebuild.net[Cake]
+:link-cakefrosting: link:https://cakebuild.net/docs/running-builds/runners/cake-frosting[Cake Frosting]
+
+:link-asciidoctor: link:https://docs.asciidoctor.org/asciidoctor/latest[Asciidoctor]
+:link-asciidoctor-install: link:https://docs.asciidoctor.org/asciidoctor/latest/install/[Install Asciidoctor]
+:link-asciidoctor-manpage: link:https://docs.asciidoctor.org/asciidoctor/latest/cli/man1/asciidoctor[asciidoctor(1)]
+
+:link-asciidoctorpdf: link:https://docs.asciidoctor.org/pdf-converter/latest[Asciidoctor PDF]
+:link-asciidoctorpdf-install: link:https://docs.asciidoctor.org/pdf-converter/latest/install/[Install Asciidoctor PDF]
+
+Cake.Asciidoctor is a {link-cake} Addin that provides aliases for {link-asciidoctor} and {link-asciidoctorpdf}
+
+*TODO:* Add build status and package links
+
+== Usage
+
+=== Prerequisites
+
+Asciidoctor and/or Asciidoctor PDF need to be installed separately for the Cake addin to work.  
+Please follow the official documentation for installation instructions:
+
+- {link-asciidoctor-install}
+- {link-asciidoctorpdf-install}
+
+=== Install the Addin
+
+Install the addin into your Cake build.
+
+* If you are using Cake scripting, use the `#addin` reprocessor directive:
++
+[source,cs]
+----
+#addin nuget:?package=Cake.Asciidoctor&version=VERSION
+----
+* If you are using {link-cakefrosting}, install the addin by adding a package reference to your project:
++
+[source,xml]
+----
+<PackageReference Include="Cake.Asciidoctor" Version="VERSION" /> 
+----
+
+=== Converting an AsciiDoc document to HTML
+
+The `Asciidoctor()` alias runs Asciidoctor to convert an AsciiDoc document to HTML.
+
+The only required parameter is the path of the input document.
+This will convert the document to HTML and place it next to the input document:
+
+[source,cs]
+----
+Task("ConvertDocuments").Does(() =>
+{
+    // This will create "input.html" in the same directory as input.adoc
+    Asciidoctor("input.adoc");
+});
+
+----
+
+Additional (optional) settings can be specified using the `AsciidoctorSettings` parameter.
+
+For example, to change the output directory, use the `DestinationDirectory` property:
+
+[source,cs]
+----
+Task("ConvertDocuments").Does(() =>
+{
+    Asciidoctor(
+        "input.adoc",
+        new AsciidoctorSettings() 
+        {
+            DestinationDirectory = "./output-directory"
+        });
+});
+----
+
+The avaialble options in `AsciidoctorSettings` correspond to the command line options of Asciidoctor.
+Please refer to {link-asciidoctor-manpage} for detailed information.
+
+### Converting an AsciiDoc document to PDF
+
+The `AsciidoctorPdf()` alias runs Asciidoctor PDF to convert an AsciiDoc document to PDF.
+
+The only required parameter is the path of the input document.
+This will convert the document to a PDF and place it next to the input document:
+
+[source,cs]
+----
+Task("ConvertDocuments").Does(() =>
+{
+    // This will create "input.html" in the same directory as input.adoc
+    AsciidoctorPdf("input.adoc");
+});
+
+----
+
+Additional (optional) settings can be specified using the `AsciidoctorPdfSettings` parameter.
+
+For example, to change the output directory, use the `DestinationDirectory` property:
+
+[source,cs]
+----
+Task("ConvertDocuments").Does(() =>
+{
+    AsciidoctorPdf(
+        "input.adoc",
+        new AsciidoctorPdfSettings() 
+        {
+            DestinationDirectory = "./output-directory"
+        });
+});
+----
+
+The available options in `AsciidoctorPdfSettings` correspond to the command line options of Asciidoctor PDF and are mostly the same as the options of Asciidoctor.
+Please refer to the {link-asciidoctorpdf} documentation for details.
+
+## License
+
+Cake.Asciidoctor is licensed under the MIT License.
+
+For details see https://github.com/ap0llo/Cake.Asciidoctor/blob/main/LICENSE
+
+
+
+== Building from source
+
+Building the project from source requires the .NET 7 SDK (version as specified in link:global.json[]).
+
+To build the project, run
+
+*TODO*
+
+== Versioning and Branching
+
+The version of the addin is automatically derived from git and the information in `version.json` using link:https://github.com/AArnott/Nerdbank.GitVersioning[Nerdbank.GitVersioning]:
+
+* The `main` branch always contains the latest version. Packages produced from `main` are always marked as pre-release versions (using the -pre suffix).
+* Stable versions are built from release branches. Build from release branches will have no -pre suffix
+* Builds from any other branch will have both the -pre prerelease tag and the git commit hash included in the version string
+
+To create a new release branch use the link:https://www.nuget.org/packages/nbgv/[nbgv tool]:
+
+[source,sh]
+----
+dotnet tool install --global nbgv
+nbgv prepare-release
+----
