@@ -10,8 +10,6 @@ namespace Cake.Asciidoctor;
 /// <seealso href="https://docs.asciidoctor.org/asciidoctor/latest/cli/man1/asciidoctor/">asciidoctor(1)</seealso>
 public abstract class AsciidoctorSettingsBase : ToolSettings
 {
-    public bool RunWithBundler { get; set; }
-
     /// <summary>
     /// The base directory containing the input document and resources (command line option <c>--base-dir</c>)
     /// </summary>

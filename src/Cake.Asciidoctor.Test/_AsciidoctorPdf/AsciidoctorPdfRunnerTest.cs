@@ -66,15 +66,7 @@ public class AsciidoctorPdfRunnerTest : AsciidoctorRunnerTestBase<AsciidoctorPdf
             m_ProcessRunner.StartedProcesses,
             x =>
             {
-                if (settings.RunWithBundler == true)
-                {
-                    Assert.Equal(m_BundlerPath, x.FilePath);
-                }
-                else
-                {
-                    Assert.Equal(m_AsciiDoctorPdfPath, x.FilePath);
-                }
-
+                Assert.Equal(m_AsciiDoctorPdfPath, x.FilePath);
                 Assert.Collection(
                     x.Settings.Arguments.Select(x => x.Render()),
                     expectedArguments.Select<string, Action<string>>(expected => actual => Assert.Equal(expected, actual)).ToArray()

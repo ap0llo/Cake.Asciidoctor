@@ -21,29 +21,6 @@ public abstract class AsciidoctorRunnerTestBase<T> : ToolTestBase where T : Asci
             expectedArguments: new[] { "\"input.adoc\"" }
         );
 
-        //
-        // Run with bundler
-        //
-        yield return TestCase(
-            id: "T102",
-            inputFile: "input.adoc",
-            settings: new()
-            {
-                RunWithBundler = false
-            },
-            expectedArguments: new[] { "\"input.adoc\"" }
-        );
-
-        yield return TestCase(
-            id: "T103",
-            inputFile: "input.adoc",
-            settings: new()
-            {
-                RunWithBundler = true
-            },
-            expectedArguments: new[] { "exec", "asciidoctor", "\"input.adoc\"" }
-        );
-
 
         //
         // --base-dir

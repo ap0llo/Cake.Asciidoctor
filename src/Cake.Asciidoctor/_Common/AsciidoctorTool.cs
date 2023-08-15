@@ -22,25 +22,13 @@ internal abstract class AsciidoctorTool<T> : Tool<T> where T : AsciidoctorSettin
 
     protected override IEnumerable<string> GetToolExecutableNames() => throw new NotImplementedException();
 
-    protected override IEnumerable<string> GetToolExecutableNames(T settings)
-    {
-        return settings.RunWithBundler
-            ? new[] { "bundle", "bundle.bat" }
-            : new[] { ToolExecuteableName, $"{ToolExecuteableName}.bat" };
-    }
+    protected override IEnumerable<string> GetToolExecutableNames(T settings) => new[] { ToolExecuteableName, $"{ToolExecuteableName}.bat" };
 
     protected abstract ProcessArgumentBuilder GetArguments(FilePath inputFile, T settings);
 
     protected ProcessArgumentBuilder GetCommonArguments(FilePath inputFile, AsciidoctorSettingsBase settings)
     {
         var argumentsBuilder = new ProcessArgumentBuilder();
-
-        if (settings.RunWithBundler)
-        {
-            argumentsBuilder
-                .Append("exec")
-                .Append("asciidoctor");
-        }
 
         argumentsBuilder
             .AppendQuoted(inputFile.ToString())
