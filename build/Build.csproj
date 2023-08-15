@@ -13,4 +13,8 @@
     <PackageReference Include="Grynwald.SharedBuild" Version="2.4.18-pre" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="..\azure-pipelines.yml" Link="azure-pipelines.yml" />
+  </ItemGroup>
+
 </Project>
