@@ -10,9 +10,11 @@
 :link-asciidoctorpdf: link:https://docs.asciidoctor.org/pdf-converter/latest[Asciidoctor PDF]
 :link-asciidoctorpdf-install: link:https://docs.asciidoctor.org/pdf-converter/latest/install/[Install Asciidoctor PDF]
 
+:url-build-statusbadge: https://dev.azure.com/ap0llo/OSS/_apis/build/status%2FCake.Asciidoctor?branchName=main
+:url-build-latest: https://dev.azure.com/ap0llo/OSS/_build/latest?definitionId=27&branchName=main
 Cake.Asciidoctor is a {link-cake} Addin that provides aliases for {link-asciidoctor} and {link-asciidoctorpdf}
 
-*TODO:* Add build status and package links
+image:{url-build-statusbadge}[link={url-build-latest}]
 
 == Usage
 
@@ -125,11 +127,17 @@ For details see https://github.com/ap0llo/Cake.Asciidoctor/blob/main/LICENSE
 
 == Building from source
 
-Building the project from source requires the .NET 7 SDK (version as specified in link:global.json[]).
+Building the project from source requires the .NET 7 SDK (version as specified in link:global.json[]) and uses Cake for the build.
 
-To build the project, run
+To execute the default build, run
 
-*TODO*
+[source,ps1]
+----
+.\build.ps1
+----
+
+This will build the project, run all tests and pack the NuGet package.
+
 
 == Versioning and Branching
 
