@@ -1,50 +1,57 @@
 <Project>
 
-	<PropertyGroup>
-		<Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-		
-		<!-- Output paths -->
-		<BaseOutputPath Condition="'$(BUILD_BINARIESDIRECTORY)' != '' ">$(BUILD_BINARIESDIRECTORY)</BaseOutputPath>
-		<BaseOutputPath Condition="'$(BaseOutputPath)' == '' ">$(MSBuildThisFileDirectory)Binaries/</BaseOutputPath>
-		<BaseOutputPath Condition="!HasTrailingSlash('BaseOutputPath')">$(BaseOutputPath)/</BaseOutputPath>
-		<OutputPath>$(BaseOutputPath)$(Configuration)/$(MSBuildProjectName)/</OutputPath>
-		<GenerateDocumentationFile>true</GenerateDocumentationFile>
-		<PackageOutputPath>$(BaseOutputPath)$(Configuration)/packages/</PackageOutputPath>
-    	<VSTestResultsDirectory>$(BaseOutputPath)TestResults/</VSTestResultsDirectory>
-	</PropertyGroup>
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
 
-	<!-- Compiler settings-->
-	<PropertyGroup>
-		<LangVersion>11.0</LangVersion>
-		<Nullable>enable</Nullable>
-		<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-		<!-- Disable warning CS1591 ( missing XML documentation comments) -->
-		<NoWarn>$(NoWarn),1591</NoWarn>
-	</PropertyGroup>
+    <!-- Output paths -->
+    <BaseOutputPath Condition="'$(BUILD_BINARIESDIRECTORY)' != '' ">$(BUILD_BINARIESDIRECTORY)</BaseOutputPath>
+    <BaseOutputPath Condition="'$(BaseOutputPath)' == '' ">$(MSBuildThisFileDirectory)Binaries/</BaseOutputPath>
+    <BaseOutputPath Condition="!HasTrailingSlash('BaseOutputPath')">$(BaseOutputPath)/</BaseOutputPath>
+    <OutputPath>$(BaseOutputPath)$(Configuration)/$(MSBuildProjectName)/</OutputPath>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <PackageOutputPath>$(BaseOutputPath)$(Configuration)/packages/</PackageOutputPath>
+    <VSTestResultsDirectory>$(BaseOutputPath)TestResults/</VSTestResultsDirectory>
+  </PropertyGroup>
 
-	<!-- SourceLink  (https://github.com/dotnet/sourcelink) -->
-	<PropertyGroup>
-		<PublishRepositoryUrl>true</PublishRepositoryUrl>
-		<AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
-		<EmbedUntrackedSources>true</EmbedUntrackedSources>
-	</PropertyGroup>
-	<ItemGroup>
-		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
-	</ItemGroup>
+  <!-- Compiler settings-->
+  <PropertyGroup>
+    <LangVersion>11.0</LangVersion>
+    <Nullable>enable</Nullable>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <!-- Disable warning CS1591 ( missing XML documentation comments) -->
+    <NoWarn>$(NoWarn),1591</NoWarn>
+  </PropertyGroup>
 
-	<!--NuGet package properties -->
-	<PropertyGroup>
-        <Authors>Andreas Gruenwald</Authors>
-		<PackageProjectUrl>https://github.com/ap0llo/Cake.Asciidoctor</PackageProjectUrl>
-		<PackageLicenseExpression>MIT</PackageLicenseExpression>
-		<Description>Cake addin for Asciidoctor and Asciidoctor PDF</Description>
-		<Copyright>Copyright (c) 2023, Andreas Gruenwald</Copyright>
-		<PackageTags>cake;build;cake-build;cake-addin;asciidoc;asciidoctor</PackageTags>
-	</PropertyGroup>
+  <!-- SourceLink  (https://github.com/dotnet/sourcelink) -->
+  <PropertyGroup>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All" />
+  </ItemGroup>
 
-	<!-- Nerdbank.GitVersioning -->
-	<ItemGroup>
-		<PackageReference Include="Nerdbank.GitVersioning"  Version="3.5.119" PrivateAssets="all" />
-	</ItemGroup>
+  <!--NuGet package properties -->
+  <PropertyGroup>
+    <Authors>Andreas Gruenwald</Authors>
+    <PackageProjectUrl>https://github.com/ap0llo/Cake.Asciidoctor</PackageProjectUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <Description>Cake addin for Asciidoctor and Asciidoctor PDF</Description>
+    <Copyright>Copyright (c) 2023, Andreas Gruenwald</Copyright>
+    <PackageTags>cake;build;cake-build;cake-addin;asciidoc;asciidoctor</PackageTags>
+  </PropertyGroup>
+
+  <!-- Nerdbank.GitVersioning -->
+  <ItemGroup>
+    <PackageReference Include="Nerdbank.GitVersioning"  Version="3.5.119" PrivateAssets="all" />
+  </ItemGroup>
+
+  <!-- Use NuGet lock file -->
+  <PropertyGroup>
+    <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
+    <!-- When running in Azure Pipelines, use locked mode -->
+    <RestoreLockedMode Condition=" '$(TF_BUILD)' == 'true' ">true</RestoreLockedMode>
+  </PropertyGroup>
 
 </Project>

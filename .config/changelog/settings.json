@@ -1,0 +1,8 @@
+{
+    "$schema": "../../schemas/configuration/schema.json",
+    "changelog": {
+        "messageOverrides": {
+            "provider": "FileSystem"
+        }
+    }
+}
