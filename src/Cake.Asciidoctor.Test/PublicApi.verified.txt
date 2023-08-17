@@ -7,11 +7,11 @@
         [Cake.Core.Annotations.CakeMethodAlias]
         public static void Asciidoctor(this Cake.Core.ICakeContext context, Cake.Core.IO.FilePath inputFile) { }
         [Cake.Core.Annotations.CakeMethodAlias]
-        public static void Asciidoctor(this Cake.Core.ICakeContext context, Cake.Core.IO.FilePath inputFile, Cake.Asciidoctor.AsciidoctorSettings? settings) { }
+        public static void Asciidoctor(this Cake.Core.ICakeContext context, Cake.Core.IO.FilePath inputFile, Cake.Asciidoctor.AsciidoctorSettings settings) { }
         [Cake.Core.Annotations.CakeMethodAlias]
         public static void AsciidoctorPdf(this Cake.Core.ICakeContext context, Cake.Core.IO.FilePath inputFile) { }
         [Cake.Core.Annotations.CakeMethodAlias]
-        public static void AsciidoctorPdf(this Cake.Core.ICakeContext context, Cake.Core.IO.FilePath inputFile, Cake.Asciidoctor.AsciidoctorPdfSettings? settings) { }
+        public static void AsciidoctorPdf(this Cake.Core.ICakeContext context, Cake.Core.IO.FilePath inputFile, Cake.Asciidoctor.AsciidoctorPdfSettings settings) { }
     }
     public class AsciidoctorAttribute
     {

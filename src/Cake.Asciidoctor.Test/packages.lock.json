@@ -11,11 +11,23 @@
           "Cake.Core": "3.0.0"
         }
       },
+      "CliWrap": {
+        "type": "Direct",
+        "requested": "[3.6.4, )",
+        "resolved": "3.6.4",
+        "contentHash": "KVGVZlR0GWgN3Xr88oZMSzYu38TXIogwLz588e6wku3mIfg6lPchxpYWtZSZfurpTY63ANF61xWp8EZF3jkN4g=="
+      },
       "coverlet.collector": {
         "type": "Direct",
         "requested": "[3.1.2, )",
         "resolved": "3.1.2",
         "contentHash": "wuLDIDKD5XMt0A7lE31JPenT7QQwZPFkP5rRpdJeblyXZ9MGLI8rYjvm5fvAKln+2/X+4IxxQDxBtwdrqKNLZw=="
+      },
+      "Grynwald.Utilities": {
+        "type": "Direct",
+        "requested": "[1.5.54, )",
+        "resolved": "1.5.54",
+        "contentHash": "eieZsu+gKrp4Hr3BwmbxsZbzBclNV0VPLSv6UGg2VNndJRVNNB766JM9jFeEUUOlF4uLRkhcyr8k3Vfkm4nv2g=="
       },
       "Microsoft.NET.Test.Sdk": {
         "type": "Direct",
@@ -1238,11 +1250,23 @@
           "Cake.Core": "3.0.0"
         }
       },
+      "CliWrap": {
+        "type": "Direct",
+        "requested": "[3.6.4, )",
+        "resolved": "3.6.4",
+        "contentHash": "KVGVZlR0GWgN3Xr88oZMSzYu38TXIogwLz588e6wku3mIfg6lPchxpYWtZSZfurpTY63ANF61xWp8EZF3jkN4g=="
+      },
       "coverlet.collector": {
         "type": "Direct",
         "requested": "[3.1.2, )",
         "resolved": "3.1.2",
         "contentHash": "wuLDIDKD5XMt0A7lE31JPenT7QQwZPFkP5rRpdJeblyXZ9MGLI8rYjvm5fvAKln+2/X+4IxxQDxBtwdrqKNLZw=="
+      },
+      "Grynwald.Utilities": {
+        "type": "Direct",
+        "requested": "[1.5.54, )",
+        "resolved": "1.5.54",
+        "contentHash": "eieZsu+gKrp4Hr3BwmbxsZbzBclNV0VPLSv6UGg2VNndJRVNNB766JM9jFeEUUOlF4uLRkhcyr8k3Vfkm4nv2g=="
       },
       "Microsoft.NET.Test.Sdk": {
         "type": "Direct",
