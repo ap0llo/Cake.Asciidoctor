@@ -1,0 +1,12 @@
+// Example from Asciidoctor documentation
+// https://docs.asciidoctor.org/asciidoctor/latest/get-started/
+= The Dangers of Wolpertingers
+:url-wolpertinger: https://en.wikipedia.org/wiki/Wolpertinger
+
+Don't worry about gumberoos or splintercats.
+Something far more fearsome plagues the days, nights, and inbetweens.
+Wolpertingers.
+
+== Origins
+
+Wolpertingers are {url-wolpertinger}[ravenous beasts].
