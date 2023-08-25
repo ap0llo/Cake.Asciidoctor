@@ -12,9 +12,15 @@
 
 :url-build-statusbadge: https://dev.azure.com/ap0llo/OSS/_apis/build/status%2FCake.Asciidoctor?branchName=main
 :url-build-latest: https://dev.azure.com/ap0llo/OSS/_build/latest?definitionId=27&branchName=main
+
+:url-nuget-badge: https://img.shields.io/nuget/v/Cake.Asciidoctor.svg
+:url-nuget-package: https://www.nuget.org/packages/Cake.Asciidoctor
+
 Cake.Asciidoctor is a {link-cake} Addin that provides aliases for {link-asciidoctor} and {link-asciidoctorpdf}
 
 image:{url-build-statusbadge}[link={url-build-latest}]
+
+image:{url-nuget-badge}[link={url-nuget-package}]
 
 == Usage
 
