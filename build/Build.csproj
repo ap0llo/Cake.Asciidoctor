@@ -10,7 +10,7 @@
   <ItemGroup>
     <PackageReference Include="Cake.BuildSystems.Module" Version="4.2.0" />
     <PackageReference Include="Cake.DotNetLocalTools.Module" Version="3.0.12" />
-    <PackageReference Include="Grynwald.SharedBuild" Version="2.4.18-pre" />
+    <PackageReference Include="Grynwald.SharedBuild" Version="2.4.20" />
   </ItemGroup>
 
   <ItemGroup>

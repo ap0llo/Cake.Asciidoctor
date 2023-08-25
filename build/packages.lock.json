@@ -19,9 +19,9 @@
       },
       "Grynwald.SharedBuild": {
         "type": "Direct",
-        "requested": "[2.4.18-pre, )",
-        "resolved": "2.4.18-pre",
-        "contentHash": "uM9uWKB84ap8poagfHB02IRnvC0D3EgaSrO/H0krpRJPgTXRPUuyqEbt2+gB4Q77isU4BW8UEgzVSZmYKn8bvQ==",
+        "requested": "[2.4.20, )",
+        "resolved": "2.4.20",
+        "contentHash": "xC3F6/G3MOK4dnthSG+Avk5RSED+GAzTIqZcR6jfA9bnu9wdIR4PEbBYk0RC/z7KNQ/0sCTSoi7rISpbdp/dxg==",
         "dependencies": {
           "Cake.FileHelpers": "6.1.3",
           "Cake.Frosting": "3.1.0",
