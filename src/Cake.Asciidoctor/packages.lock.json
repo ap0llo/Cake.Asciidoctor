@@ -4,18 +4,18 @@
     "net6.0": {
       "Cake.Common": {
         "type": "Direct",
-        "requested": "[3.0.0, )",
-        "resolved": "3.0.0",
-        "contentHash": "gs4/iOhCQTGH39TiYElQOt/VZx4E1Vq/IW2ePsxw5xQz5GKSzwv9dfqG7giHic9Wst7qZngFN7mzFCIvuG7e/Q==",
+        "requested": "[3.1.0, )",
+        "resolved": "3.1.0",
+        "contentHash": "lO20ZYAVlDshGlgnerD466yi9PYmYbVDE4DXlinOuXK0FXcswSllUxF4Dy/Mv8RMLKoROrLkALgkvS07H7gHWQ==",
         "dependencies": {
-          "Cake.Core": "3.0.0"
+          "Cake.Core": "3.1.0"
         }
       },
       "Cake.Core": {
         "type": "Direct",
-        "requested": "[3.0.0, )",
-        "resolved": "3.0.0",
-        "contentHash": "d1/NImObNEiTe1BLX16Rfi0KK3oCVIMvLbFzEy8xlTh9wDCI/yTDwLZ8YgjhOG32MpBm0WbVDsJklK6nFvBcQg==",
+        "requested": "[3.1.0, )",
+        "resolved": "3.1.0",
+        "contentHash": "RisOvO+qy8gerUbn2YBzWwyPRVRhsX+er3xbqXzIWn5FByY/Vs1nSuG17uEyryGHasw8D3kXdQ75TWDI2gK2DQ==",
         "dependencies": {
           "Microsoft.CSharp": "4.7.0",
           "Microsoft.Win32.Registry": "5.0.0"
@@ -90,18 +90,18 @@
     "net7.0": {
       "Cake.Common": {
         "type": "Direct",
-        "requested": "[3.0.0, )",
-        "resolved": "3.0.0",
-        "contentHash": "gs4/iOhCQTGH39TiYElQOt/VZx4E1Vq/IW2ePsxw5xQz5GKSzwv9dfqG7giHic9Wst7qZngFN7mzFCIvuG7e/Q==",
+        "requested": "[3.1.0, )",
+        "resolved": "3.1.0",
+        "contentHash": "lO20ZYAVlDshGlgnerD466yi9PYmYbVDE4DXlinOuXK0FXcswSllUxF4Dy/Mv8RMLKoROrLkALgkvS07H7gHWQ==",
         "dependencies": {
-          "Cake.Core": "3.0.0"
+          "Cake.Core": "3.1.0"
         }
       },
       "Cake.Core": {
         "type": "Direct",
-        "requested": "[3.0.0, )",
-        "resolved": "3.0.0",
-        "contentHash": "d1/NImObNEiTe1BLX16Rfi0KK3oCVIMvLbFzEy8xlTh9wDCI/yTDwLZ8YgjhOG32MpBm0WbVDsJklK6nFvBcQg==",
+        "requested": "[3.1.0, )",
+        "resolved": "3.1.0",
+        "contentHash": "RisOvO+qy8gerUbn2YBzWwyPRVRhsX+er3xbqXzIWn5FByY/Vs1nSuG17uEyryGHasw8D3kXdQ75TWDI2gK2DQ==",
         "dependencies": {
           "Microsoft.CSharp": "4.7.0",
           "Microsoft.Win32.Registry": "5.0.0"
