@@ -47,17 +47,17 @@ internal abstract class AsciidoctorTool<T> : Tool<T> where T : AsciidoctorSettin
             .AppendIf("--timings", settings.Timings);
 
 
-        foreach (var templateDirectory in settings.TemplateDirectories ?? Enumerable.Empty<DirectoryPath>())
+        foreach (var templateDirectory in settings.TemplateDirectories?.Distinct() ?? Enumerable.Empty<DirectoryPath>())
         {
             argumentsBuilder.AppendSwitchQuoted("--template-dir", templateDirectory);
         }
 
-        foreach (var loadPath in settings.LoadPaths ?? Enumerable.Empty<DirectoryPath>())
+        foreach (var loadPath in settings.LoadPaths?.Distinct() ?? Enumerable.Empty<DirectoryPath>())
         {
             argumentsBuilder.AppendSwitchQuoted("--load-path", loadPath);
         }
 
-        foreach (var library in settings.Require ?? Enumerable.Empty<string>())
+        foreach (var library in settings.Require?.Distinct(StringComparer.OrdinalIgnoreCase) ?? Enumerable.Empty<string>()) //TODO: unique
         {
             argumentsBuilder.AppendSwitchQuoted("--require", library);
         }

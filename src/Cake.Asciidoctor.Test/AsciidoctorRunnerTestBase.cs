@@ -116,7 +116,8 @@ public abstract class AsciidoctorRunnerTestBase<T> : ToolTestBase where T : Asci
                 LoadPaths = new DirectoryPath[]
                 {
                     "some-load-path",
-                    "another-load-path"
+                    "another-load-path",
+                    "some-load-path",  // duplicates are removed when building the command line arguments
                 }
             },
             expectedArguments: new[] { "\"input.adoc\"", "--load-path \"some-load-path\"", "--load-path \"another-load-path\"" }
@@ -193,7 +194,7 @@ public abstract class AsciidoctorRunnerTestBase<T> : ToolTestBase where T : Asci
             inputFile: "input.adoc",
             settings: new()
             {
-                Require = new[] { "library1", "library2" }
+                Require = new[] { "library1", "library2", "library1" }
             },
             expectedArguments: new[] { "\"input.adoc\"", "--require \"library1\"", "--require \"library2\"" }
         );
@@ -226,6 +227,9 @@ public abstract class AsciidoctorRunnerTestBase<T> : ToolTestBase where T : Asci
             var settings = new T();
             settings.TemplateDirectories.Add("some-template-dir");
             settings.TemplateDirectories.Add("some-other-template-dir");
+
+            // duplicates are removed when building the command line arguments
+            settings.TemplateDirectories.Add("some-template-dir");
 
             yield return TestCase(
                 id: "T119",
