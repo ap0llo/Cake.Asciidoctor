@@ -1,5 +1,5 @@
 {
-    "$schema": "../../schemas/configuration/schema.json",
+    "$schema": "https://raw.githubusercontent.com/ap0llo/changelog/master/schemas/configuration/schema.json",
     "changelog": {
         "messageOverrides": {
             "provider": "FileSystem"
