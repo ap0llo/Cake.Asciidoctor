@@ -22,7 +22,7 @@ internal abstract class AsciidoctorTool<T> : Tool<T> where T : AsciidoctorSettin
 
     protected override IEnumerable<string> GetToolExecutableNames() => throw new NotImplementedException();
 
-    protected override IEnumerable<string> GetToolExecutableNames(T settings) => new[] { ToolExecuteableName, $"{ToolExecuteableName}.bat" };
+    protected override IEnumerable<string> GetToolExecutableNames(T settings) => new[] { $"{ToolExecuteableName}.bat", $"{ToolExecuteableName}.cmd", ToolExecuteableName };
 
     protected abstract ProcessArgumentBuilder GetArguments(FilePath inputFile, T settings);
 

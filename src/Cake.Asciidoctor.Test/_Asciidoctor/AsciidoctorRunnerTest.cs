@@ -13,16 +13,12 @@ namespace Cake.Asciidoctor.Test;
 public class AsciidoctorRunnerTest : AsciidoctorRunnerTestBase<AsciidoctorSettings>
 {
     private readonly FilePath m_AsciiDoctorPath;
-    private readonly FilePath m_BundlerPath;
 
 
     public AsciidoctorRunnerTest()
     {
         m_AsciiDoctorPath = m_FileSystem.CreateFile(m_Environment.WorkingDirectory.CombineWithFilePath("asciidoctor")).Path;
         m_ToolLocator.RegisterFile(m_AsciiDoctorPath);
-
-        m_BundlerPath = m_FileSystem.CreateFile(m_Environment.WorkingDirectory.CombineWithFilePath("bundle")).Path;
-        m_ToolLocator.RegisterFile(m_BundlerPath);
     }
 
 
