@@ -67,12 +67,12 @@
       },
       "Verify.Xunit": {
         "type": "Direct",
-        "requested": "[21.2.0, )",
-        "resolved": "21.2.0",
-        "contentHash": "/LIHNDvELqrvpdbMCJnzlcJxx3wJOujflfyBo9sDId0r1/0RbQLqxq93In8Ip43NX5COp330AfUfcHU2cr5E4g==",
+        "requested": "[21.3.0, )",
+        "resolved": "21.3.0",
+        "contentHash": "AvcF4EQ0aThXqxCEeC9gO2UYsUmq6G8O62xGE7Kp+L1lL4BBG5pEMhpCpuAVEcLEg38r3GjdfX6uTkcRI0wGFg==",
         "dependencies": {
           "EmptyFiles": "4.5.1",
-          "Verify": "21.2.0",
+          "Verify": "21.3.0",
           "xunit.abstractions": "2.0.3",
           "xunit.extensibility.execution": "2.5.1"
         }
@@ -96,8 +96,8 @@
       },
       "Argon": {
         "type": "Transitive",
-        "resolved": "0.10.0",
-        "contentHash": "mt/xp+muvKd6a2TWgZgj+GRQw7z1xwGwhJBto8M34J66ajnpahULFDZDuK809D7dOm0agr6RqwgyBbQRHj17KQ=="
+        "resolved": "0.11.0",
+        "contentHash": "ifnjfK718Ve/zX07VuTnuRRYe6q2IBh38PySZMOt6FZwn3C0FNK2uOQc+FJluaGBhWZP1OhOBt3HLbC1hzNNug=="
       },
       "Cake.Core": {
         "type": "Transitive",
@@ -1126,10 +1126,10 @@
       },
       "Verify": {
         "type": "Transitive",
-        "resolved": "21.2.0",
-        "contentHash": "EJNzvwf1K5oqfA355xQ83JP5qAa3hKg9L9esKbcU0NaMVbtrSNK/o8J8IR4U16NjBMTn1liN8WH/4UrIZsZN4g==",
+        "resolved": "21.3.0",
+        "contentHash": "Cp5BUQmXQdmmlbVcwFTR010CkP4w0xwgDjyjzlEBfsXKoz9CgLM2mxQjPbCgz3eHi5LJa7bnW6JOYQmInOVdkA==",
         "dependencies": {
-          "Argon": "0.10.0",
+          "Argon": "0.11.0",
           "DiffEngine": "12.3.0",
           "EmptyFiles": "4.5.1",
           "SimpleInfoName": "2.1.1",
@@ -1251,12 +1251,12 @@
       },
       "Verify.Xunit": {
         "type": "Direct",
-        "requested": "[21.2.0, )",
-        "resolved": "21.2.0",
-        "contentHash": "/LIHNDvELqrvpdbMCJnzlcJxx3wJOujflfyBo9sDId0r1/0RbQLqxq93In8Ip43NX5COp330AfUfcHU2cr5E4g==",
+        "requested": "[21.3.0, )",
+        "resolved": "21.3.0",
+        "contentHash": "AvcF4EQ0aThXqxCEeC9gO2UYsUmq6G8O62xGE7Kp+L1lL4BBG5pEMhpCpuAVEcLEg38r3GjdfX6uTkcRI0wGFg==",
         "dependencies": {
           "EmptyFiles": "4.5.1",
-          "Verify": "21.2.0",
+          "Verify": "21.3.0",
           "xunit.abstractions": "2.0.3",
           "xunit.extensibility.execution": "2.5.1"
         }
@@ -1280,8 +1280,8 @@
       },
       "Argon": {
         "type": "Transitive",
-        "resolved": "0.10.0",
-        "contentHash": "mt/xp+muvKd6a2TWgZgj+GRQw7z1xwGwhJBto8M34J66ajnpahULFDZDuK809D7dOm0agr6RqwgyBbQRHj17KQ=="
+        "resolved": "0.11.0",
+        "contentHash": "ifnjfK718Ve/zX07VuTnuRRYe6q2IBh38PySZMOt6FZwn3C0FNK2uOQc+FJluaGBhWZP1OhOBt3HLbC1hzNNug=="
       },
       "Cake.Core": {
         "type": "Transitive",
@@ -2310,10 +2310,10 @@
       },
       "Verify": {
         "type": "Transitive",
-        "resolved": "21.2.0",
-        "contentHash": "EJNzvwf1K5oqfA355xQ83JP5qAa3hKg9L9esKbcU0NaMVbtrSNK/o8J8IR4U16NjBMTn1liN8WH/4UrIZsZN4g==",
+        "resolved": "21.3.0",
+        "contentHash": "Cp5BUQmXQdmmlbVcwFTR010CkP4w0xwgDjyjzlEBfsXKoz9CgLM2mxQjPbCgz3eHi5LJa7bnW6JOYQmInOVdkA==",
         "dependencies": {
-          "Argon": "0.10.0",
+          "Argon": "0.11.0",
           "DiffEngine": "12.3.0",
           "EmptyFiles": "4.5.1",
           "SimpleInfoName": "2.1.1",
