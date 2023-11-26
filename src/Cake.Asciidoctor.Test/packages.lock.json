@@ -4,11 +4,11 @@
     "net6.0": {
       "Cake.Testing": {
         "type": "Direct",
-        "requested": "[3.1.0, )",
-        "resolved": "3.1.0",
-        "contentHash": "zgqyaedBGZZNUAGXQv9M5Ab9x/6oTw7qgSOcFwF9jCZV4HGvJEkALF+Ss94tEdg7c6oFzDEPozTiOsqdCr1fjg==",
+        "requested": "[3.2.0, )",
+        "resolved": "3.2.0",
+        "contentHash": "A/zx2mRaQz5NE+se1jc4WYbF/p5zbawl92FW5pXTtc9Uc9D4fPc6lvsl3W5Xwsyj+Hj3k3Bu9JC2Xr+Xko3msA==",
         "dependencies": {
-          "Cake.Core": "3.1.0"
+          "Cake.Core": "3.2.0"
         }
       },
       "CliWrap": {
@@ -101,8 +101,8 @@
       },
       "Cake.Core": {
         "type": "Transitive",
-        "resolved": "3.1.0",
-        "contentHash": "RisOvO+qy8gerUbn2YBzWwyPRVRhsX+er3xbqXzIWn5FByY/Vs1nSuG17uEyryGHasw8D3kXdQ75TWDI2gK2DQ==",
+        "resolved": "3.2.0",
+        "contentHash": "tN4iFgwS2Y7VgnXJZ5mtB0CElCCADQDtiNkJRZzgykc61dLcJ3dyuXnjc7jO3KPQs2j+0IbciH1S8tR6FVzc2g==",
         "dependencies": {
           "Microsoft.CSharp": "4.7.0",
           "Microsoft.Win32.Registry": "5.0.0"
@@ -1185,11 +1185,11 @@
     "net7.0": {
       "Cake.Testing": {
         "type": "Direct",
-        "requested": "[3.1.0, )",
-        "resolved": "3.1.0",
-        "contentHash": "zgqyaedBGZZNUAGXQv9M5Ab9x/6oTw7qgSOcFwF9jCZV4HGvJEkALF+Ss94tEdg7c6oFzDEPozTiOsqdCr1fjg==",
+        "requested": "[3.2.0, )",
+        "resolved": "3.2.0",
+        "contentHash": "A/zx2mRaQz5NE+se1jc4WYbF/p5zbawl92FW5pXTtc9Uc9D4fPc6lvsl3W5Xwsyj+Hj3k3Bu9JC2Xr+Xko3msA==",
         "dependencies": {
-          "Cake.Core": "3.1.0"
+          "Cake.Core": "3.2.0"
         }
       },
       "CliWrap": {
@@ -1282,8 +1282,8 @@
       },
       "Cake.Core": {
         "type": "Transitive",
-        "resolved": "3.1.0",
-        "contentHash": "RisOvO+qy8gerUbn2YBzWwyPRVRhsX+er3xbqXzIWn5FByY/Vs1nSuG17uEyryGHasw8D3kXdQ75TWDI2gK2DQ==",
+        "resolved": "3.2.0",
+        "contentHash": "tN4iFgwS2Y7VgnXJZ5mtB0CElCCADQDtiNkJRZzgykc61dLcJ3dyuXnjc7jO3KPQs2j+0IbciH1S8tR6FVzc2g==",
         "dependencies": {
           "Microsoft.CSharp": "4.7.0",
           "Microsoft.Win32.Registry": "5.0.0"
