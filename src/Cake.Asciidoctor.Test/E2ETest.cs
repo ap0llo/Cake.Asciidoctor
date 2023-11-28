@@ -13,6 +13,17 @@ public class E2ETest
 {
     private readonly ITestOutputHelper m_TestOutputHelper;
 
+#if NET6_0
+    private const string s_CakeToolVersion = "3.0.0";
+    private const string s_TargetFramework = "net6.0";
+#elif NET7_0
+    private const string s_CakeToolVersion = "3.0.0";
+    private const string s_TargetFramework = "net7.0";
+#elif NET8_0
+    private const string s_CakeToolVersion = "4.0.0";
+    private const string s_TargetFramework = "net8.0";
+#endif
+
     public E2ETest(ITestOutputHelper testOutputHelper)
     {
         m_TestOutputHelper = testOutputHelper ?? throw new ArgumentNullException(nameof(testOutputHelper));
@@ -44,13 +55,13 @@ public class E2ETest
 
         temporaryDirectory.AddFile(
             ".config/dotnet-tools.json",
-            """
+            $$"""
             {
               "version": 1,
               "isRoot": true,
               "tools": {
                 "cake.tool": {
-                  "version": "3.0.0",
+                  "version": "{{s_CakeToolVersion}}",
                   "commands": [
                     "dotnet-cake"
                   ]
@@ -102,7 +113,7 @@ public class E2ETest
 
                 <PropertyGroup>
                     <OutputType>Exe</OutputType>
-                    <TargetFramework>net8.0</TargetFramework>
+                    <TargetFramework>{{s_TargetFramework}}</TargetFramework>
                     <RunWorkingDirectory>$(MSBuildProjectDirectory)</RunWorkingDirectory>
                 </PropertyGroup>
 
