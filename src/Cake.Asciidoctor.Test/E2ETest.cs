@@ -102,7 +102,7 @@ public class E2ETest
 
                 <PropertyGroup>
                     <OutputType>Exe</OutputType>
-                    <TargetFramework>net7.0</TargetFramework>
+                    <TargetFramework>net8.0</TargetFramework>
                     <RunWorkingDirectory>$(MSBuildProjectDirectory)</RunWorkingDirectory>
                 </PropertyGroup>
 
