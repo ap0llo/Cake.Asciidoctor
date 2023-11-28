@@ -29,9 +29,9 @@
       },
       "SauceControl.InheritDoc": {
         "type": "Direct",
-        "requested": "[1.3.0, )",
-        "resolved": "1.3.0",
-        "contentHash": "5TD+Msy3h4fanqlXQUTaXol79Ci2mTV7t4rS2uLRAQncIqKOUoUl/n8Y4jNVcV8WN2fVlwypm1mxvW47pJByTQ=="
+        "requested": "[1.4.0, )",
+        "resolved": "1.4.0",
+        "contentHash": "sHV0VPqvclqeS0D5evpcw1SziC+XrS8OcPS7gWfJOHRqoI6qp7CpFIAe2dfAzuwlq7UjGXS7/ZsnkfThrApFAA=="
       },
       "Microsoft.CSharp": {
         "type": "Transitive",
@@ -95,9 +95,9 @@
       },
       "SauceControl.InheritDoc": {
         "type": "Direct",
-        "requested": "[1.3.0, )",
-        "resolved": "1.3.0",
-        "contentHash": "5TD+Msy3h4fanqlXQUTaXol79Ci2mTV7t4rS2uLRAQncIqKOUoUl/n8Y4jNVcV8WN2fVlwypm1mxvW47pJByTQ=="
+        "requested": "[1.4.0, )",
+        "resolved": "1.4.0",
+        "contentHash": "sHV0VPqvclqeS0D5evpcw1SziC+XrS8OcPS7gWfJOHRqoI6qp7CpFIAe2dfAzuwlq7UjGXS7/ZsnkfThrApFAA=="
       },
       "Microsoft.CSharp": {
         "type": "Transitive",
@@ -161,9 +161,9 @@
       },
       "SauceControl.InheritDoc": {
         "type": "Direct",
-        "requested": "[1.3.0, )",
-        "resolved": "1.3.0",
-        "contentHash": "5TD+Msy3h4fanqlXQUTaXol79Ci2mTV7t4rS2uLRAQncIqKOUoUl/n8Y4jNVcV8WN2fVlwypm1mxvW47pJByTQ=="
+        "requested": "[1.4.0, )",
+        "resolved": "1.4.0",
+        "contentHash": "sHV0VPqvclqeS0D5evpcw1SziC+XrS8OcPS7gWfJOHRqoI6qp7CpFIAe2dfAzuwlq7UjGXS7/ZsnkfThrApFAA=="
       },
       "Microsoft.CSharp": {
         "type": "Transitive",
