@@ -29,9 +29,9 @@
       },
       "SauceControl.InheritDoc": {
         "type": "Direct",
-        "requested": "[1.4.0, )",
-        "resolved": "1.4.0",
-        "contentHash": "sHV0VPqvclqeS0D5evpcw1SziC+XrS8OcPS7gWfJOHRqoI6qp7CpFIAe2dfAzuwlq7UjGXS7/ZsnkfThrApFAA=="
+        "requested": "[2.0.0, )",
+        "resolved": "2.0.0",
+        "contentHash": "92KFbp6F3wKTRBtKFul+PaL3s9lgP9iHg0Uo5x6V9wiU8LHnKnrZhoYEGDSqhGNb5fT2Np2FHlBGwm+1EtyObQ=="
       },
       "Microsoft.CSharp": {
         "type": "Transitive",
@@ -95,9 +95,9 @@
       },
       "SauceControl.InheritDoc": {
         "type": "Direct",
-        "requested": "[1.4.0, )",
-        "resolved": "1.4.0",
-        "contentHash": "sHV0VPqvclqeS0D5evpcw1SziC+XrS8OcPS7gWfJOHRqoI6qp7CpFIAe2dfAzuwlq7UjGXS7/ZsnkfThrApFAA=="
+        "requested": "[2.0.0, )",
+        "resolved": "2.0.0",
+        "contentHash": "92KFbp6F3wKTRBtKFul+PaL3s9lgP9iHg0Uo5x6V9wiU8LHnKnrZhoYEGDSqhGNb5fT2Np2FHlBGwm+1EtyObQ=="
       },
       "Microsoft.CSharp": {
         "type": "Transitive",
@@ -161,9 +161,9 @@
       },
       "SauceControl.InheritDoc": {
         "type": "Direct",
-        "requested": "[1.4.0, )",
-        "resolved": "1.4.0",
-        "contentHash": "sHV0VPqvclqeS0D5evpcw1SziC+XrS8OcPS7gWfJOHRqoI6qp7CpFIAe2dfAzuwlq7UjGXS7/ZsnkfThrApFAA=="
+        "requested": "[2.0.0, )",
+        "resolved": "2.0.0",
+        "contentHash": "92KFbp6F3wKTRBtKFul+PaL3s9lgP9iHg0Uo5x6V9wiU8LHnKnrZhoYEGDSqhGNb5fT2Np2FHlBGwm+1EtyObQ=="
       },
       "Microsoft.CSharp": {
         "type": "Transitive",
