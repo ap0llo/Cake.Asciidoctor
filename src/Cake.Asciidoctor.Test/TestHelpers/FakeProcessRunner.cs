@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Cake.Core.IO;
+using Cake.Testing;
 
 namespace Cake.Asciidoctor.Test.TestHelpers;
 
