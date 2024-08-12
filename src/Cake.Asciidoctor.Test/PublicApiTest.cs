@@ -8,7 +8,6 @@ using Xunit;
 
 namespace Cake.Asciidoctor.Test;
 
-[UsesVerify]
 [Trait("Category", "SkipWhenLiveUnitTesting")]
 public class PublicApiTest
 {
