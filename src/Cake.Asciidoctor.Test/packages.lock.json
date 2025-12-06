@@ -47,12 +47,12 @@
       },
       "PublicApiGenerator": {
         "type": "Direct",
-        "requested": "[11.1.0, )",
-        "resolved": "11.1.0",
-        "contentHash": "iHU9N149uYirtVxGZh8dKIGv1CpecHD+5E2NVx1c490LqGyWCORZ52DpVqgjNs1rGluT1LNasRNBBjARssGcIg==",
+        "requested": "[11.5.4, )",
+        "resolved": "11.5.4",
+        "contentHash": "Va382WG4Vng8kCtDaAP5solqbhayMMlW1E+e/DV/w39yJPybmMgy8fbdUvvQgG93EMILx7JtJbGS1HRhVNTUVQ==",
         "dependencies": {
-          "Mono.Cecil": "0.11.5",
-          "System.CodeDom": "8.0.0"
+          "Mono.Cecil": "0.11.6",
+          "System.CodeDom": "6.0.0"
         }
       },
       "Verify.Xunit": {
@@ -161,8 +161,8 @@
       },
       "Mono.Cecil": {
         "type": "Transitive",
-        "resolved": "0.11.5",
-        "contentHash": "fxfX+0JGTZ8YQeu1MYjbBiK2CYTSzDyEeIixt+yqKKTn7FW8rv7JMY70qevup4ZJfD7Kk/VG/jDzQQTpfch87g=="
+        "resolved": "0.11.6",
+        "contentHash": "f33RkDtZO8VlGXCtmQIviOtxgnUdym9xx/b1p9h91CRGOsJFxCFOFK1FDbVt1OCf1aWwYejUFa2MOQyFWTFjbA=="
       },
       "Newtonsoft.Json": {
         "type": "Transitive",
@@ -325,12 +325,12 @@
       },
       "PublicApiGenerator": {
         "type": "Direct",
-        "requested": "[11.1.0, )",
-        "resolved": "11.1.0",
-        "contentHash": "iHU9N149uYirtVxGZh8dKIGv1CpecHD+5E2NVx1c490LqGyWCORZ52DpVqgjNs1rGluT1LNasRNBBjARssGcIg==",
+        "requested": "[11.5.4, )",
+        "resolved": "11.5.4",
+        "contentHash": "Va382WG4Vng8kCtDaAP5solqbhayMMlW1E+e/DV/w39yJPybmMgy8fbdUvvQgG93EMILx7JtJbGS1HRhVNTUVQ==",
         "dependencies": {
-          "Mono.Cecil": "0.11.5",
-          "System.CodeDom": "8.0.0"
+          "Mono.Cecil": "0.11.6",
+          "System.CodeDom": "6.0.0"
         }
       },
       "Verify.Xunit": {
@@ -439,8 +439,8 @@
       },
       "Mono.Cecil": {
         "type": "Transitive",
-        "resolved": "0.11.5",
-        "contentHash": "fxfX+0JGTZ8YQeu1MYjbBiK2CYTSzDyEeIixt+yqKKTn7FW8rv7JMY70qevup4ZJfD7Kk/VG/jDzQQTpfch87g=="
+        "resolved": "0.11.6",
+        "contentHash": "f33RkDtZO8VlGXCtmQIviOtxgnUdym9xx/b1p9h91CRGOsJFxCFOFK1FDbVt1OCf1aWwYejUFa2MOQyFWTFjbA=="
       },
       "Newtonsoft.Json": {
         "type": "Transitive",
@@ -595,12 +595,12 @@
       },
       "PublicApiGenerator": {
         "type": "Direct",
-        "requested": "[11.1.0, )",
-        "resolved": "11.1.0",
-        "contentHash": "iHU9N149uYirtVxGZh8dKIGv1CpecHD+5E2NVx1c490LqGyWCORZ52DpVqgjNs1rGluT1LNasRNBBjARssGcIg==",
+        "requested": "[11.5.4, )",
+        "resolved": "11.5.4",
+        "contentHash": "Va382WG4Vng8kCtDaAP5solqbhayMMlW1E+e/DV/w39yJPybmMgy8fbdUvvQgG93EMILx7JtJbGS1HRhVNTUVQ==",
         "dependencies": {
-          "Mono.Cecil": "0.11.5",
-          "System.CodeDom": "8.0.0"
+          "Mono.Cecil": "0.11.6",
+          "System.CodeDom": "6.0.0"
         }
       },
       "Verify.Xunit": {
@@ -702,8 +702,8 @@
       },
       "Mono.Cecil": {
         "type": "Transitive",
-        "resolved": "0.11.5",
-        "contentHash": "fxfX+0JGTZ8YQeu1MYjbBiK2CYTSzDyEeIixt+yqKKTn7FW8rv7JMY70qevup4ZJfD7Kk/VG/jDzQQTpfch87g=="
+        "resolved": "0.11.6",
+        "contentHash": "f33RkDtZO8VlGXCtmQIviOtxgnUdym9xx/b1p9h91CRGOsJFxCFOFK1FDbVt1OCf1aWwYejUFa2MOQyFWTFjbA=="
       },
       "Newtonsoft.Json": {
         "type": "Transitive",
