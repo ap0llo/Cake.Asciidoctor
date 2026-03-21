@@ -14,7 +14,7 @@
     <PackageReference Include="xunit.runner.visualstudio" Version="2.8.2" PrivateAssets="all" />
     <PackageReference Include="coverlet.collector" Version="6.0.2" PrivateAssets="all" />
     <PackageReference Include="Grynwald.Utilities" Version="1.6.122" />
-    <PackageReference Include="CliWrap" Version="3.6.6" />
+    <PackageReference Include="CliWrap" Version="3.10.1" />
   </ItemGroup>
 
   <ItemGroup>
